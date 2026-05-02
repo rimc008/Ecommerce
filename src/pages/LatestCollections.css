@@ -1,0 +1,57 @@
+.imag:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    
+}
+
+.link1{
+    color: black;
+    text-decoration: None;
+}
+.link1:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.imag2:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: grey;
+    font-weight: bold;
+}
+
+.imag3:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+.imag{
+    height:300px;
+    width:300px;
+    border-radius:30px;
+    border: solid black 3px;
+    transition: transform 0.3s ease; 
+    box-shadow: 2px 2px 0px black;
+}
+
+
+.sliding{
+    display: flex;
+    flex-direction: row;
+    animation: scroll 20s linear infinite;
+    
+}
+
+@keyframes scroll{
+    0%{
+        transform: translateX(0)
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.sliding:hover{
+    animation-play-state: paused;
+}
