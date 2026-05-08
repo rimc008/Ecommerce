@@ -32,7 +32,40 @@ const Product = () => {
     setBgdecider2(item1)
   }
 
+  const handleChange8 = async(e) => {
 
+    if (sizedecide){
+      try {
+        const res = await fetch("http://localhost:4001/api/product/additem" , 
+          {
+            method:"POST",
+            headers : {
+              "Content-Type":"application/json",
+              Authorization : `Bearer ${localStorage.getItem("token")}`
+            },
+
+            body : JSON.stringify({name:product.name,price:product.price,image:product.image[0],size:bgdecider2,id:product._id}) 
+          }
+        )
+
+        const data = await res.json();
+
+        if(data.success){
+          alert("Item Added To Cart")
+        }
+        else{
+          console.log(data.message);
+          
+        }
+
+
+      } catch (error) {
+        console.log(error.message);
+         
+      }
+    }
+
+  }
   // items append to cart list(push would not work as it returns size only)(synchronous)
   const handleChange4 = () => {
 
@@ -111,7 +144,7 @@ const Product = () => {
                 </div>
               </div>
 
-              <div style={{border:"solid black 3px",width:"152px",textAlign:"center",marginTop:"20px",backgroundColor: bgdecider?"white":"black",color: bgdecider?"black":"white",borderRadius:"5px",fontWeight:bgdecider?"bold":""}} className='imag3' onClick={handleChange4}>
+              <div style={{border:"solid black 3px",width:"152px",textAlign:"center",marginTop:"20px",backgroundColor: bgdecider?"white":"black",color: bgdecider?"black":"white",borderRadius:"5px",fontWeight:bgdecider?"bold":""}} className='imag3' onClick={() => {handleChange4(),handleChange8()}}>
                 <p>ADD TO CART</p>
               </div>
 

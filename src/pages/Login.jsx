@@ -1,22 +1,61 @@
 import { correctBoxShadow } from "framer-motion";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({loginvisual}) => {
+
+  const navigate = useNavigate();
+
   const [isLogin, setIsLogin] = useState(true);
 
   const [form, setForm] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(isLogin ? "LOGIN" : "SIGNUP", form);
+
+    try {
+      const res = await fetch( isLogin ? "http://localhost:4001/api/user/login" : "http://localhost:4001/api/user/register" ,
+        {
+          method:"POST",
+          headers : {
+            "Content-Type":"application/json"
+          },
+          body : isLogin ? JSON.stringify({email : form.email , password :form.password}) : JSON.stringify({name : form.name , email : form.email ,password : form.password})
+        }
+      )
+
+      const data = await res.json();
+
+      if (data.success){
+        localStorage.setItem("token",data.token);
+
+        isLogin ? alert("Login Successfull") : alert("SignUp Sucessfull")
+
+        loginvisual();
+        navigate("/")
+
+      }
+      else{
+        alert( data.message )
+      }
+
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+    finally{
+      console.log(isLogin ? "LOGIN" : "SIGNUP", form);
+    }
+    
   };
 
   const styles = {

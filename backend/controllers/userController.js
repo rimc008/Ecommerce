@@ -76,7 +76,9 @@ export const userlogin = async(req,res) => {
             return res.json({success:false,message:"Incorrect password"})
         }
 
-        res.send({success:"true",message:"Welcome back"})
+        const token = createTokens(data._id)
+
+        res.send({success:"true",message:"Welcome back",token})
 
     } catch (error) {
         console.log(error);

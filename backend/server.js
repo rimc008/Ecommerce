@@ -1,9 +1,10 @@
 import express from 'express'
-import cors from 'cors'
 import 'dotenv/config'
 import ConnectDB from './config/mongodb.js';
 import connectCloudinary from './config/cloudinary.js';
-import userRoutes from "./routes/userRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js"
+import { middleware } from './middleware/middleware.js';
 
 
 //app config
@@ -14,10 +15,10 @@ ConnectDB();
 connectCloudinary();
 
 // middleware 
-app.use(express.json())
-app.use(cors())
+middleware(app)
 
-app.use("/api/route",userRoutes)
+app.use("/api/user",userRoutes)
+app.use("/api/product",productRoutes)
 
 app.listen(port , () => {
     console.log(`running on port ${port}`);

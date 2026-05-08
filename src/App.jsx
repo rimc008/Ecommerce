@@ -11,14 +11,20 @@ function App() {
 
   const [search,setSearch] = useState("");
 
+  const [visual,setVisual] = useState("Login")
+
   const collectionNew = (e) =>{
     setSearch(e.target.value);
+  }
+
+  const visualChange = () => {
+    setVisual("Welcome!!")
   }
 
   return (
     <div>
 
-      <Navbar onSearchChange={collectionNew} search={search}/>
+      <Navbar onSearchChange={collectionNew} search={search} visual={visual}/>
 
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -26,7 +32,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/collections" element={<Collections search={search}/>} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login loginvisual={visualChange} visual={visual}/>} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/profile" element={<Profile />} />

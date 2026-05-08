@@ -20,7 +20,7 @@ const navLinkStyles1 = {
     textDecoration:"None",
 };
 
-const Navbar = ({onSearchChange}) => {
+const Navbar = ({onSearchChange,visual}) => {
 
     const [show,setShow] = useState(false);
 
@@ -57,29 +57,33 @@ const Navbar = ({onSearchChange}) => {
 
                     <img src={search} alt="" style={{height:"50px" ,width:"55px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}} onClick={Search} search = {searchdress}/>
 
-                    <NavLink to="/login" style={navLinkStyles}>Login</NavLink>
+                    <div>
+                        {(visual === "Login")?<NavLink to="/login" style={navLinkStyles}>{visual}</NavLink>:
+                        <div style={navLinkStyles}>{visual}</div>}
+                    </div>
 
                     <NavLink to="/cart"><img src={image2} alt="" style={{height:"70px",width:"70px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/></NavLink>
 
                     <img title="Account" onClick={Change} src={account} alt="" style={{height:"60px" ,width:"60px", borderRadius:"15px",cursor:"pointer"}}/>
-                        {show && (
-                            <div style={{
-                            position: "absolute",
-                            display: "flex",
-                            flexDirection:"column",
-                            background: "white",
-                            border: "1px solid black",
-                            borderRadius:"20px",
-                            padding: "10px",
-                            top: "100px", 
-                            right: "20px",
-                            
-                            }}>
-                                <p><NavLink to="/profile" style={navLinkStyles1}>Profile</NavLink></p>
-                                <p><NavLink to="/orders" style={navLinkStyles1}>Orders</NavLink></p>
-                                <p><NavLink to="/logout" style={navLinkStyles1}>Logout</NavLink></p>
-                            </div>
-                        )}
+                    
+                    {show && (
+                        <div style={{
+                        position: "absolute",
+                        display: "flex",
+                        flexDirection:"column",
+                        background: "white",
+                        border: "1px solid black",
+                        borderRadius:"20px",
+                        padding: "10px",
+                        top: "100px", 
+                        right: "20px",
+                        
+                        }}>
+                            <p><NavLink to="/profile" style={navLinkStyles1}>Profile</NavLink></p>
+                            <p><NavLink to="/orders" style={navLinkStyles1}>Orders</NavLink></p>
+                            <p><NavLink to="/logout" style={navLinkStyles1}>Logout</NavLink></p>
+                        </div>
+                    )}
                     
 
                 </div>
