@@ -21,6 +21,7 @@ export const addProduct = async(req,res) => {
 
 }
 
+
 //get all added item
 export const all1 = async(req, res) => {
   const data = await Product1.find();
@@ -28,8 +29,18 @@ export const all1 = async(req, res) => {
   res.json(data);
 }
 
+
 //delete product
 export const deleteProduct = async(req,res) => {
 
+    try {
+        const {id,size} = req.body;
+        const data2 = await Product1.findOneAndDelete({id,size});
 
+        res.json({success:true,message:"Item Deleted"});
+
+    } catch (error) {
+
+        res.json({success:false,message:error.message});
+    }
 }

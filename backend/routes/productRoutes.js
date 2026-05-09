@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post("/additem",verifyToken,addProduct);
 router.post("/deleteitem",deleteProduct);
-router.get("/all1", all1)
+router.get("/all1", all1);
+router.delete("/deleteitem",deleteProduct);
 
 export default router

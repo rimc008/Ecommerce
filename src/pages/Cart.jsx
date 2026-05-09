@@ -19,6 +19,38 @@ const Cart = () => {
   let [price,setPrice] = useState(0);
   const [items,setItems] = useState("");
 
+  const [idfrdel,setIdfrdel] = useState([])
+
+  const handleChange9 = async(id,size) => {
+
+    const nextidfrdel = cart.filter((item) => item._id === id)
+    setIdfrdel(nextidfrdel)
+
+    try {
+      const res = await fetch("http://localhost:4001/api/product/deleteitem",
+        {
+          method:"DELETE",
+          headers : {
+            "Content-Type":"application/json"
+          },
+          body: JSON.stringify({id : nextidfrdel[0]._id , size:size})
+        }
+      )
+
+      const data = await res.json();
+
+      if(data.success){
+        alert("Item Deleted");
+      }
+      else{
+        alert(data.message);
+      }
+
+    } catch (error) {
+      console.log(error.message);
+       
+    }
+  }
 
   const handleChange5 =(id,size) => {
     const nextcart = cart.filter((item) => !(item._id === id && item.size === size))
@@ -82,7 +114,7 @@ const Cart = () => {
           </div>
 
           <div style={{display:"flex",flexDirection:"column",justifyContent:"center",cursor:"pointer"}}>
-            <img onClick={()=>handleChange5(item._id,item.size)} src={image4} alt="" />
+            <img onClick={()=>{handleChange5(item._id,item.size),handleChange9(item._id,item.size)}} src={image4} alt="" />
           </div>
           
         </div>
