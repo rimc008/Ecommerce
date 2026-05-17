@@ -40,6 +40,7 @@ const Login = ({loginvisual}) => {
         isLogin ? alert("Login Successfull") : alert("SignUp Sucessfull")
 
         loginvisual();
+        
         navigate("/")
 
       }

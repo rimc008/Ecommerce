@@ -3,8 +3,8 @@ import {ShopContext} from "../context/ShopContext.jsx"
 import { Link } from 'react-router-dom'
 import './LatestCollections.css'
 import { motion,AnimatePresence } from 'framer-motion'
-import { div, object } from 'framer-motion/client'
 import Bottompage from './Bottompage.jsx'
+import {assets} from "../assets/assets.js"
 
 
 
@@ -49,12 +49,28 @@ const Collections = ({search}) => {
   }
 
   const activeFilters = Object.keys(filters).filter(item => filters[item]);
+  const checkFilters = Object.keys(filters).filter(item => filters[item] || !filters[item] );
 
-  if (activeFilters.length > 0){
+  console.log(activeFilters);
+  
+
+  if ((activeFilters.length > 0) && (activeFilters.some(item => checkFilters.slice(0,3).includes(item))) && (activeFilters.some(item => checkFilters.slice(3,6).includes(item) ))) {
 
     finalProductList = finalProductList.filter(item => 
-      activeFilters.includes(item.category) || activeFilters.includes(item.subCategory)
+      activeFilters.includes(item.category) && activeFilters.includes(item.subcategory)
     )
+  }
+
+  if ((activeFilters.length > 0) && (activeFilters.some(item => checkFilters.slice(0,3).includes(item)))){
+
+    finalProductList = finalProductList.filter(item => 
+      activeFilters.includes(item.category))
+  }
+
+  if ((activeFilters.length > 0) && (activeFilters.some(item => checkFilters.slice(3,6).includes(item)))){
+
+    finalProductList = finalProductList.filter(item => 
+      activeFilters.includes(item.subcategory))
   }
 
   //sort apply
@@ -143,8 +159,14 @@ const Collections = ({search}) => {
         <div style={{display:"flex",width:"1600px",gap:"15px",flexWrap:"wrap",marginTop:"10px"}}>
 
           {
-            finalProductList.length > 0 ? (finalProductList.map((item) => (
-              <div>
+            finalProductList.length > 0 ? (finalProductList.map((item,i) => (
+              <div style={{position:"relative"}}>
+                <p style={{position:"absolute",top:"63%", left:20,zIndex:900,display:"flex",gap:"3px"}}>
+                  
+                  <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />
+                  <p style={{padding:0,margin:0,fontSize:"18px"}}>{(i%2 == 0) ? 4.3 : (i%3 == 0)? 4.7 : 4.2}</p>
+
+                  </p>
                 <Link to={`/product/${item._id}`}><img src={item.image[0]} alt="" className='imag'/></Link>
                 <p>{item.name}</p>
                 <p>${item.price}</p>

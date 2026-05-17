@@ -10,4 +10,5 @@ router.post("/deleteitem",deleteProduct);
 router.get("/all1", all1);
 router.delete("/deleteitem",deleteProduct);
 
+
 export default router

@@ -12,6 +12,8 @@ const Product = () => {
   // global things get using usecontext
   const {products,objt,setObjt,setCart} = useContext(ShopContext)
 
+  console.log(products);
+  
 
   // parameter indentical or not 
   let params = useParams();
@@ -21,8 +23,10 @@ const Product = () => {
   //usestate hooks
   const [imageset,setImageset] = useState(product.image[0]);
   const [sizedecide,setSizedecide] = useState(false);
+  let addcartvalidator = true;
   const [bgdecider,setBgdecider] = useState(false);
   const [bgdecider2,setBgdecider2] = useState(null);
+  
 
 
   // a function to decide that a item should be includede in a cart or not and a decider function for change in backgroundcolor of size button
@@ -52,12 +56,12 @@ const Product = () => {
 
         if(data.success){
           alert("Item Added To Cart")
-        }
-        else{
-          console.log(data.message);
           
         }
-
+        else{
+          addcartvalidator = false
+          alert(data.message);
+        }
 
       } catch (error) {
         console.log(error.message);
@@ -70,14 +74,14 @@ const Product = () => {
   const handleChange4 = () => {
 
     //synchronous purpose
-    if (sizedecide){
+    if (sizedecide && addcartvalidator){
       const nextsetObjt = {
         name: product.name,
         price : product.price,
         description : product.description,
         image : product.image[0],
         category : product.category,
-        subCategory : product.subCategory,
+        subCategory : product.subcategory,
         _id : product._id,
         size: bgdecider2
       }
@@ -136,7 +140,7 @@ const Product = () => {
               <div style={{marginTop:"40px"}}>
                 <h4>Select Size</h4>
                 <div>
-                  {product.sizes.map((item1) => (
+                  {product.size.map((item1) => (
                     <button style={{height:"40px",width:"45px",fontSize:"17px",marginRight:"10px",borderRadius:"5px",backgroundColor:bgdecider2==item1? "grey":""}} className="imag2" onClick={()=>sizedecider(item1)}>
                       {item1}
                     </button>
@@ -144,7 +148,7 @@ const Product = () => {
                 </div>
               </div>
 
-              <div style={{border:"solid black 3px",width:"152px",textAlign:"center",marginTop:"20px",backgroundColor: bgdecider?"white":"black",color: bgdecider?"black":"white",borderRadius:"5px",fontWeight:bgdecider?"bold":""}} className='imag3' onClick={() => {handleChange4(),handleChange8()}}>
+              <div style={{border:"solid black 3px",width:"152px",textAlign:"center",marginTop:"20px",backgroundColor: bgdecider?"white":"black",color: bgdecider?"black":"white",borderRadius:"5px",fontWeight:bgdecider?"bold":""}} className='imag3' onClick={async() => {await handleChange8();handleChange4()}}>
                 <p>ADD TO CART</p>
               </div>
 
@@ -164,7 +168,7 @@ const Product = () => {
         <div style={{display:"flex",flexDirection:"row",gap:"15px",justifyContent:"center"}}>
           {
             products.filter((item2) => (
-              item2.category == product.category && item2.subCategory == product.subCategory 
+              item2.category == product.category && item2.subcategory == product.subcategory 
             )).slice(1,6).map((item3) => (
               <div>
                   <Link to={`/product/${item3._id}`}><img src={item3.image[0]} alt="" className='imag'/></Link>

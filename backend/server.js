@@ -5,7 +5,7 @@ import connectCloudinary from './config/cloudinary.js';
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js"
 import { middleware } from './middleware/middleware.js';
-
+import adminRoutes from "./routes/adminRoutes.js"
 
 //app config
 
@@ -19,6 +19,8 @@ middleware(app)
 
 app.use("/api/user",userRoutes)
 app.use("/api/product",productRoutes)
+app.use("/api/admin",adminRoutes)
+app.use("/uploads",express.static("uploads"))
 
 app.listen(port , () => {
     console.log(`running on port ${port}`);
