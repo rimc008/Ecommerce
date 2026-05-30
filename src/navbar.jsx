@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import image from './assets/image.png'
 import search from './assets/image copy 5.png'
 import account from './assets/image copy 4.png'
 import { motion,AnimatePresence } from 'framer-motion'
 import image2 from './assets/image copy 6.png'
+import { ShopContext } from './context/ShopContext'
 
 
 
@@ -13,6 +14,8 @@ const navLinkStyles = {
     fontWeight : "bold",
     fontSize:"30px",
     textDecoration:"None",
+    borderBottom:"4px solid black",
+    transition:"all 0.2s ease-in-out"
 };
 const navLinkStyles1 = {
     color: "black",
@@ -29,10 +32,13 @@ const navLinkStyles2 = {
     paddingBottom:"2px",
     textDecoration:"None",
     borderBottom:"solid #ec4899 4px",
+    transition:"all 0.2s ease-in-out",
     cursor:"pointer"
 };
 
 const Navbar = ({onSearchChange,visual,setGettoken}) => {
+
+    const {cart} = useContext(ShopContext);
     
     const [select,setSelect] = useState(0)
     const [show,setShow] = useState(false);
@@ -55,31 +61,41 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
         <div style={{position:"sticky",top:"0",zIndex:"1000"}}>
             <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between", maxHeight:"fit-content" , padding:"8px",backgroundColor:"black"}}>
 
-                <img src={image} alt="" style={{height:"65px" ,width:"75px", borderRadius:"15px",marginRight:"150px"}} />    
+                <div style={{width:"40%"}}>
+                <img src={image} alt="" style={{height:"65px" ,width:"75px", borderRadius:"15px",marginRight:"150px"}} /> 
+                </div>   
 
-                <nav style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"35px",marginLeft:"60px"}}>
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"35px",width:"30%",justifyContent:"start"}}>
 
                     <NavLink to="/" onClick={() => setSelect(1)} style={select===1 ?navLinkStyles2 : navLinkStyles}>Home</NavLink>
                     <NavLink to="/collections" onClick={() => setSelect(2)} style={select===2 ?navLinkStyles2 : navLinkStyles}>Collections</NavLink>
                     <NavLink to="/about" onClick={() => setSelect(3)} style={select===3 ?navLinkStyles2 : navLinkStyles}>About</NavLink>
 
-                </nav>
+                </div>
 
 
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"20px"}}>
+                <div style={{display:"flex",justifyContent:"end",flexDirection:"row",alignItems:"center",gap:"20px",width:"30%"}}>
 
                     <img src={search} alt="" style={{height:"50px" ,width:"55px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}} onClick={Search} search = {searchdress}/>
 
                     <div>
                         {(visual === "Login")?<NavLink onClick={() => setSelect(4)} to="/login" style={select===4 ?navLinkStyles2 : navLinkStyles}>{visual}</NavLink>:
-                        <div style={select===4 ?navLinkStyles2 : navLinkStyles}>{visual}</div>}
+                        <div style={{color:"#ec4899",fontSize:"31px",fontWeight:"bold"}}>{visual}</div>}
                     </div>
 
-                    <NavLink to="/cart"><img src={image2} alt="" style={{height:"70px",width:"70px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/></NavLink>
+                    <NavLink to="/cart">
+                    
+                    <div style={{position:"relative"}}><img src={image2} alt="" style={{height:"70px",width:"70px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/>
+
+                        <div style={{position:"absolute",borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#5af26b",color:"black",textAlign:"center",top:10,right:10,fontWeight:"bold"}}>{cart.length}</div>
+
+                    </div>
+
+                    </NavLink>
 
                     <img title="Account" onClick={Change} src={account} alt="" style={{height:"60px" ,width:"60px", borderRadius:"15px",cursor:"pointer"}}/>
 
-                    {show && (
+                    {(
                         <div style={{
                         position: "absolute",
                         display: "flex",
@@ -90,6 +106,12 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
                         padding: "10px",
                         top: "100px", 
                         right: "20px",
+                        transition: "all 0.3s ease",
+                        opacity: show ? 1 : 0,
+                        height:show ? "200px" :" 0px",
+                         overflow: "hidden"
+
+
                         
                         }}>
                             <p><NavLink to="/profile" style={navLinkStyles1}>Profile</NavLink></p>
@@ -112,8 +134,8 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
                     <motion.div 
                     initial={{opacity:0,y:20,scale:0.3}}
                     animate={{opacity:1,y:0,scale:1}}
-                    exit={{opacity:0,y:20,scale:0.3}}
-                    transition={{ duration: 0.1}}
+                    exit={{opacity:0,y:20,scale:0.7}}
+                    transition={{ duration: 0.3}}
                     style={{display:"flex",justifyContent:"center",marginTop:"20px"}}>
 
 

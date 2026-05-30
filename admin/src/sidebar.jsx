@@ -11,7 +11,11 @@ const Sidebar = () => {
         image:assets.order_icon , text:"List Items"
     },{
         image:assets.order_icon , text:"Orders"
-    },]  
+    },{
+        image:assets.order_icon , text:"Update"
+    }
+]
+
     
   return (
 

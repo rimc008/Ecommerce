@@ -14,3 +14,4 @@ export { default as Profile } from './Profile';
 export { default as Orders } from './Orders';
 export { default as LatestCollections } from './LatestCollections';
 export { default as BestSelling } from './BestSelling';
+export { default as Successorder} from './Successorder';

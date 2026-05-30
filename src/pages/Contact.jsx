@@ -18,17 +18,13 @@ const navLinkStyles6 ={
   paddingBottom:"25px"
 }
 
-const Contact = () => {
+const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pincode,setPincode,phone,setPhone}) => {
 
   const [fetching,setFetching] = useState(false);
 
   const [coords,setCoords] = useState(null);
 
   const [address,setAddress] = useState("");
-
-  const [pincode,setpPincode] = useState("");
-
-  const [specificaddress,setSpecificaddress] = useState("");
 
   useEffect(() => {
     window.scrollTo(0,0);
@@ -54,7 +50,7 @@ const Contact = () => {
           const data = await res.json();
 
           setAddress(data.address);
-          setpPincode(data.address.postcode);
+          setPincode(data.address.postcode);
           setSpecificaddress(data.display_name)
 
         } catch (error) {
@@ -107,12 +103,12 @@ const Contact = () => {
     paddingBottom:"25px"}}>
             <div>
               <label htmlFor="firstname"> First Name: </label>
-              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name'/>
+              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)}required/>
             </div>
 
             <div>
               <label htmlFor="lastname"> Last Name: </label>
-              <input type="text" id='lastname' name='lastname' style={navLinkStyles5} placeholder='Last Name'/>
+              <input type="text" id='lastname' name='lastname' style={navLinkStyles5} placeholder='Last Name' required/>
             </div>
           </div>
 
@@ -123,7 +119,7 @@ const Contact = () => {
 
           <div style={navLinkStyles6}>
               <label htmlFor="city"> City: </label>
-              <input type="text" value={address.city} id='city' name='city' style={navLinkStyles5} placeholder='City'/>
+              <input type="text" value={address.city} id='city' name='city' style={navLinkStyles5} placeholder='City' required/>
           </div>
 
           <div style={navLinkStyles6}>
@@ -133,7 +129,7 @@ const Contact = () => {
 
           <div style={navLinkStyles6}>
             <label htmlFor="phone"> Ph. no.: </label>
-            <input type="text" id='phone' name='phone' style={navLinkStyles5} placeholder='Phone Number'/>
+            <input type="text" id='phone' name='phone' value={phone} style={navLinkStyles5} placeholder='Phone Number' onChange={(e)=> setPhone(e.target.value)} required/>
           </div>
 
           <div style={navLinkStyles6}>
@@ -143,12 +139,12 @@ const Contact = () => {
 
           <div style={navLinkStyles6}>
             <label htmlFor="address">Address: </label>
-            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"800px",fontFamily:"Prata"}} placeholder='Your address'/>
+            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"800px",fontFamily:"Prata"}} placeholder='Your address' required/>
           </div>
 
           <div style={navLinkStyles6}>
             <label htmlFor="pin">Pin Code: </label>
-            <input type="text" value={pincode} name='pin' id='pin' style={navLinkStyles5} placeholder='Pin Code'/>
+            <input type="text" value={pincode} name='pin' id='pin' style={navLinkStyles5} placeholder='Pin Code' required/>
           </div>
 
           <div style={navLinkStyles6}>

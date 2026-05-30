@@ -9,7 +9,7 @@ const ProductSchema = new mongoose.Schema({
     price : {type: Number, required: true},
     image : {type: Array, required: true},
     size : {type : String, required: true},
-    id : {type : String , required:true , unique:true},
+    id : {type : String , required:true},
     
 
 })
@@ -24,7 +24,7 @@ Cannot overwrite product model once compiled
 
 */
 
-const Product1 =  mongoose.model.product || mongoose.model("product",ProductSchema)
+const Product1 =  mongoose.models.product || mongoose.model("product",ProductSchema)
 
 export default Product1
 

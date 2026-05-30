@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  zoom:0.8
+}
+
 body {
   font-family: "Prata", serif;
   font-weight: 400;

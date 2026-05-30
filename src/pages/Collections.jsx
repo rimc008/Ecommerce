@@ -104,7 +104,7 @@ const Collections = ({search}) => {
     <div
 
      style={{display:"grid",gridTemplateColumns:"1fr 2fr"}}>
-      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",height:"80vh",position:"sticky",top:"0"}}>
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",height:"80vh",position:"sticky",top:"150px"}}>
 
         <div><h1>Filters</h1></div>
 
@@ -148,23 +148,25 @@ const Collections = ({search}) => {
       </div>
 
       <div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"40px",width:"77vw"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"40px",width:"102vw"}}>
             <h1>See Collections</h1>
-            <select name="" id="" style={{fontSize:"25px",height:"50px",borderRadius:"10px",border:"solid grey 3px",cursor:"pointer",backgroundColor:"black",color:"white",textAlign:"center"}} onChange={handleChange2}>
+            <select name="" id="" style={{fontSize:"25px",height:"50px",borderRadius:"10px",border:"solid black 3px",cursor:"pointer",backgroundColor:"black",color:"white",textAlign:"center"}} onChange={handleChange2}>
               <option value="" >Sort By</option>
               <option value="increasing" >Increasing price</option>
               <option value="decreasing">Decreasing price</option>
             </select>
         </div>
-        <div style={{display:"flex",width:"1600px",gap:"15px",flexWrap:"wrap",marginTop:"10px"}}>
+
+        
+        <div style={{display:"flex",width:"1580px",gap:"15px",flexWrap:"wrap",marginTop:"10px"}}>
 
           {
             finalProductList.length > 0 ? (finalProductList.map((item,i) => (
               <div style={{position:"relative"}}>
                 <p style={{position:"absolute",top:"63%", left:20,zIndex:900,display:"flex",gap:"3px"}}>
-                  
+
                   <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />
-                  <p style={{padding:0,margin:0,fontSize:"18px"}}>{(i%2 == 0) ? 4.3 : (i%3 == 0)? 4.7 : 4.2}</p>
+                  <p style={{padding:0,margin:0,fontSize:"18px"}}>{item.rating}</p>
 
                   </p>
                 <Link to={`/product/${item._id}`}><img src={item.image[0]} alt="" className='imag'/></Link>
@@ -179,7 +181,8 @@ const Collections = ({search}) => {
 
         </div>
       </div>
-    </div>
+      </div>
+  
 
     <div>
       <Bottompage />

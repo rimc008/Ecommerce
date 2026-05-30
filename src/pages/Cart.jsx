@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
-import { div } from 'framer-motion/client';
+import { div, linearGradient } from 'framer-motion/client';
 import image4 from "../assets/bin_icon.png"
 import Bottompage from './Bottompage';
 import { NavLink } from 'react-router-dom';
@@ -13,13 +13,32 @@ const navLinkStyles3 = {
     textDecoration:"None",
 };
 
-const Cart = () => {
+const Cart = ({price,setPrice}) => {
 
   const {cart,setCart,delivery_fee} = useContext(ShopContext);
-  let [price,setPrice] = useState(0);
+  
+
+  let [quantity,setQuantity] = useState(() => {
+    try{
+        const storedItems4 = localStorage.getItem("quantity");
+        return storedItems4 ? JSON.parse(storedItems4) : {};
+        }
+        catch{
+            return {}
+        }
+  })
+
+  useEffect(() => {
+    localStorage.setItem("quantity",JSON.stringify(quantity))
+  },[quantity])
+
   const [items,setItems] = useState("");
 
   const [idfrdel,setIdfrdel] = useState([])
+
+  console.log(quantity);
+  
+
 
   const handleChange9 = async(id,size) => {
 
@@ -61,7 +80,7 @@ const Cart = () => {
   useEffect(()=> {
 
     let a = 0
-    cart.map((item) => a += item.price) // state is immutable , you can't use state variable as a normal variable like price += item.price
+    cart.map((item) => a += item.price*(quantity[`${item._id}-${item.size}`]||1)) // state is immutable , you can't use state variable as a normal variable like price += item.price
 
     setPrice(a)
 
@@ -72,7 +91,7 @@ const Cart = () => {
       setItems("item");
     }
 
-  },[cart])
+  },[cart,quantity])
   
   return (
 
@@ -87,7 +106,7 @@ const Cart = () => {
 
       <div style={{width:"1700px",textAlign:"center"}}><h1>Your Cart ({cart.length} {items})</h1></div>
 
-      <div style={{display:"flex",width:"1700px",justifyContent:"space-between",fontSize:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",fontWeight:"bold"}}>
+      <div style={{display:"flex",width:"1700px",justifyContent:"space-between",fontSize:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",fontWeight:"bold",background: "linear-gradient(to right,transparent 0%,pink 15%,pink 85%,transparent 100%)",paddingRight:"20px"}}>
         <p style={{width:"500px",textAlign:"center"}}>Product</p>
         <p>Quantity</p>
         <p>Delete</p>
@@ -101,19 +120,30 @@ const Cart = () => {
 
             <div style={{display:"flex",justifyContent:"space-around",flexDirection:"column",height:"100px"}}>
               <div style={{fontWeight:"bold",fontSize:"20px"}}><p style={{margin:0}}>{item.name}</p></div>
+
               <div style={{display:"flex",gap:"20px",fontSize:"20px"}}>
                 <p style={{margin:0}}>${item.price}</p>
                 <p style={{margin:0}}>{item.size}</p>
+                <p style={{margin:0}}>Q - {quantity[`${item._id}-${item.size}`] || 1}</p>
               </div>
+
             </div>
 
           </div>
 
           <div style={{display:"flex",flexDirection:"column",justifyContent:"center",width:"100px"}}>
-            <input style={{fontSize:"20px",border:"solid black 3px",borderRadius:"5px",height:"35px"}} type="number" min={1} defaultValue={1}/>
+            <input style={{fontSize:"20px",border:"solid black 3px",borderRadius:"5px",height:"35px"}} type="number" min={1} value={quantity[`${item._id}-${item.size}`] || 1} onChange={(e) => 
+            
+            setQuantity((prev) => ({
+              ...prev,
+              [`${item._id}-${item.size}`] : e.target.value
+
+            }))
+
+      }/>
           </div>
 
-          <div style={{display:"flex",flexDirection:"column",justifyContent:"center",cursor:"pointer"}}>
+          <div style={{display:"flex",flexDirection:"column",justifyContent:"center",cursor:"pointer",paddingRight:"20px"}}>
             <img onClick={()=>{handleChange5(item._id,item.size),handleChange9(item._id,item.size)}} src={image4} alt="" />
           </div>
           
@@ -123,7 +153,7 @@ const Cart = () => {
 
     </div>
 
-    <div style={{ marginLeft:"157px",paddingTop:"50px"}}>
+    <div style={{ marginLeft:"100px",paddingTop:"50px"}}>
       <h2>Subtotal ${price}</h2>
 
       <div style={{borderBottom:"solid black 3px" , width:"1700px",display:"flex",justifyContent:"space-between",gap:"20px"}}>

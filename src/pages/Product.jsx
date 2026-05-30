@@ -4,6 +4,8 @@ import {ShopContext} from "../context/ShopContext.jsx"
 import { button, div, p } from 'framer-motion/client';
 import './LatestCollections.css'
 import Bottompage from './Bottompage.jsx';
+import {assets} from "../assets/assets.js"
+
 
 
 
@@ -94,7 +96,7 @@ const Product = () => {
     }
 
     else{
-      alert("Set a size first")
+      if(!sizedecide) {alert("Set a size first")}
     }
   }
 
@@ -136,6 +138,26 @@ const Product = () => {
                 <h2>{product.name}</h2>
                 <h2>${product.price}</h2>
                 <p>{product.description}</p>
+                  <p>{(product.rating)>4 ? 
+
+                  <div style={{display:"flex"}}>
+                    {Array(4).fill(0).map((item) => <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />)}
+
+                    {Array(1).fill(0).map((item) => <img style={{height:"20px",width:"20px"}} src={assets.star_dull_icon} alt="" />)}
+
+                    <p style={{padding:0,margin:0,marginLeft:10,fontSize:20,fontWeight:"bold"}}>{product.rating}</p>
+                  </div>: 
+                  <div style={{display:"flex"}}>
+                    {Array(3).fill(0).map((item) => <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />)}
+
+                    {Array(2).fill(0).map((item) => <img style={{height:"20px",width:"20px"}} src={assets.star_dull_icon} alt="" />)}
+
+                    <p style={{padding:0,margin:0,marginLeft:10,fontSize:20,fontWeight:"bold"}}>{product.rating}</p>
+                  </div>                  
+                  }
+
+                 
+                </p>
               </div>
               <div style={{marginTop:"40px"}}>
                 <h4>Select Size</h4>

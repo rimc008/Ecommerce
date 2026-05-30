@@ -7,10 +7,11 @@
 .link1{
     color: black;
     text-decoration: None;
+    transition: all 0.3s ease;
 }
 .link1:hover{
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.10);
 }
 
 .imag2:hover{
@@ -27,31 +28,10 @@
 }
 
 .imag{
-    height:300px;
-    width:300px;
+    height:295px;
+    width:295px;
     border-radius:30px;
     border: solid black 3px;
     transition: transform 0.3s ease; 
-    box-shadow: 2px 2px 0px black;
-}
-
-
-.sliding{
-    display: flex;
-    flex-direction: row;
-    animation: scroll 20s linear infinite;
-    
-}
-
-@keyframes scroll{
-    0%{
-        transform: translateX(0)
-    }
-    100%{
-        transform: translateX(-100%);
-    }
-}
-
-.sliding:hover{
-    animation-play-state: paused;
+    box-shadow: 3px 3px 6px black;
 }

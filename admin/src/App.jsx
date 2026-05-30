@@ -7,6 +7,7 @@ import Navbar from './navbar'
 import Sidebar from './sidebar'
 import Login from './pages/login'
 import List from './pages/list'
+import Update from './pages/update'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -47,6 +48,7 @@ const App = () => {
                 <Route path="/add" element={<Add trigger={trigger}/>} />
                 <Route path="/orders" element={<Product/>} />
                 <Route path="/list" element={<List triggerkey={triggerkey}/>} />
+                <Route path="/update" element={<Update/>} />
 
               </Routes>
             </div>

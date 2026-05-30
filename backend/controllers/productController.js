@@ -5,6 +5,12 @@ export const addProduct = async(req,res) => {
 
     try {
     const {name,price,image,size,id} = req.body;
+    const presentalready = await Product1.findOne({id,size})
+
+    if (presentalready){
+        res.json({success:false,message:"Already In cart"})
+    }
+
 
     console.log(req.user);
     const user = req.user.id;
@@ -26,7 +32,7 @@ export const addProduct = async(req,res) => {
 export const all1 = async(req, res) => {
   const data = await Product1.find();
 
-  res.json(data);
+  res.json({success:true,data});
 }
 
 
@@ -38,6 +44,20 @@ export const deleteProduct = async(req,res) => {
         const data2 = await Product1.findOneAndDelete({id,size});
 
         res.json({success:true,message:"Item Deleted"});
+
+    } catch (error) {
+
+        res.json({success:false,message:error.message});
+    }
+}
+
+export const deleteallproduct = async(req,res) => {
+
+    try {
+
+        const data7 = await Product1.deleteMany({});
+
+        res.json({success:true,message:"All Item Deleted"});
 
     } catch (error) {
 

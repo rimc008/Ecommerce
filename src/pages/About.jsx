@@ -41,7 +41,7 @@ const About = () => {
       <div style={{textAlign:"center",marginBottom:"40px"}}>
         <h1>About Us</h1>
       </div>
-      <div style={{display:"grid",gridTemplateColumns:"2fr 3fr",marginLeft:"150px",width:"1700px",gap:"20px"}}>
+      <div style={{display:"grid",gridTemplateColumns:"2fr 3fr",marginLeft:"80px",width:"1700px",gap:"20px"}}>
         <div style={{display:"flex",justifyContent:"center"}}>
           <img src={image7} style={{height:"500px",width:"450px",borderRadius:"20px",border:"solid black 3px",boxShadow:"10px 10px 0px black"}} alt="" />
         </div>
@@ -54,10 +54,10 @@ const About = () => {
         </div>
       </div>
 
-      <div style={{marginLeft:"260px",marginTop:"90px"}}>
+      <div style={{marginLeft:"180px",marginTop:"100px"}}>
         <h1>Why Choose Us?</h1>
 
-        <div style={{display:"flex",gap:"80px"}}>
+        <div style={{display:"flex",gap:"70px"}}>
           {whyChooseUs.map((item)=> (
             <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",width:"300px",border:"solid black 3px",borderRadius:"20px",padding:"20px",boxShadow:"10px 10px 0px black"}}>
               <h2>{item.name}</h2>

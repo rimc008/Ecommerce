@@ -9,6 +9,7 @@ const adminProductSchema = new mongoose.Schema({
     price:{type:Number,required:true},
     image:{type:Array,required:true},
     size:{type:Array,requiresd:true},
+    rating:{type:Number}
 
 })
 

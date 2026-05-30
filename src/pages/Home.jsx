@@ -45,15 +45,15 @@ const Home = () => {
       
       <div id="latestcollections" style={{paddingTop:"90px"}}>
 
-        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",borderRadius:"30px"}}>
-          <h1>Latest Collections</h1>
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"linear-gradient(to right , transparent 0%, black 25%, black 75%,transparent 100%)"}}>
+          <h1 style={{color:"white",margin:7,padding:0}}>Latest Collections</h1>
         </div>
         <LatestCollections/>
       </div>
 
       <div id="bestselling" style={{paddingTop:"90px"}}>
-        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",borderRadius:"30px"}}>
-          <h1>BestSeller</h1>
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",borderRadius:"30px",background:"linear-gradient(to right , transparent 0%, black 25%, black 75%,transparent 100%)"}}>
+          <h1 style={{color:"white",padding:0,margin:7}}>BestSeller</h1>
         </div>
         <div style={{paddingTop:"20px"}}><BestSelling/></div>
       </div>

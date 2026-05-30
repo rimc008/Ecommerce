@@ -2,7 +2,7 @@ import { correctBoxShadow } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({loginvisual}) => {
+const Login = ({setGettoken}) => {
 
   const navigate = useNavigate();
 
@@ -39,8 +39,7 @@ const Login = ({loginvisual}) => {
 
         isLogin ? alert("Login Successfull") : alert("SignUp Sucessfull")
 
-        loginvisual();
-        
+        setGettoken(localStorage.getItem("token"))        
         navigate("/")
 
       }

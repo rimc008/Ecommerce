@@ -1,3 +1,4 @@
+import { data } from "framer-motion/client";
 import adminProduct1 from "../models/adminProduct.js";
 import {v2 as cloudinary} from "cloudinary";
 
@@ -82,15 +83,14 @@ export const updateitems = async(req,res) => {
     try {
         const data6 = await adminProduct1.find();
 
-        const newdata6 = data6.map((item,i) => ({
+        for (let i=0;i<data6.length;i++){
 
-            ...item,
-            rating : (i%2==0) ? 4.3 : (i%3 == 0) ? 4.7 : 4.2 
+            data6[i]["rating"] = (i%2 == 0) ? 4.3 : (i%3 == 0)? 4.7 : 4.2;
 
-            
-    }))
+            await data6[i].save();
+        }
 
-        res.json({success:true,newdata6})
+        res.json({success:true,data6})
 
 
     } catch (error) {
