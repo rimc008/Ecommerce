@@ -14,8 +14,8 @@ const Bottompage = () => {
   return (
 
     <div>
-        <div style={{display:"flex",justifyContent:"space-evenly",paddingTop:"100px"}}>
-            <div style={{display:"flex",flexDirection:"column",width:"400px",alignContent:"center",alignItems:"center"}}>
+        <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-evenly",alignItems:"space-evenly",gap:"30px",paddingTop:"100px"}}>
+            <div style={{display:"flex",flexDirection:"column",width:"400px",alignItems:"center"}}>
                 <img src={exchange} alt="" style={{height:"50px",width:"50px"}}/>
 
                 
@@ -25,19 +25,19 @@ const Bottompage = () => {
 
             </div>
             <div style={{display:"flex",flexDirection:"column"
-                ,width:"400px",alignContent:"center",alignItems:"center"}}>
+                ,width:"400px",alignItems:"center"}}>
                 <img src={quality} alt="" style={{height:"50px",width:"50px"}}/>
                 <h2 style={{paddingBottom:0,marginBottom:0}}>7 Days Refund Policy</h2>
                 <p>We provide 7 days refund policy</p>
             </div>
-            <div style={{display:"flex",flexDirection:"column",width:"400px",alignContent:"center",alignItems:"center"}}>
+            <div style={{display:"flex",flexDirection:"column",width:"400px",alignItems:"center"}}>
                 <img src={support} alt="" style={{height:"50px",width:"50px"}}/>
                 <h2 style={{paddingBottom:0,marginBottom:0}}>Best Customer Support</h2>
                 <p>we provide 24/7 support</p>
             </div>
         </div>
 
-        <div style={{display:"flex",flexDirection:"column",alignContent:"center",alignItems:"center",paddingTop:"100px",paddingBottom:"100px"}}>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"center",paddingTop:"100px",paddingBottom:"100px"}}>
             <h1>Subscribe now & get 20% off</h1>
             <p>Enter your email to subscribe</p>
             <div style={{display:"flex"}}>
@@ -48,12 +48,13 @@ const Bottompage = () => {
         </div>
 
         <div style={{display:"flex",justifyContent:"space-around",paddingTop:"50px" , backgroundColor:"black",color:"white",paddingBottom:"50px"}}>
-            <div style={{display:"flex",flexDirection:"column",width:"700px",}}>
+
+            <div style={{display:"flex",flexDirection:"column",width:"30%",}}>
                 <img src={image} alt="" style={{height:"70px",width:"70px"}}/>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolorem doloremque temporibus veritatis magni quia, tempora quisquam possimus maxime nobis?</p>
             </div>
-
-            <div style={{display:"flex",gap:"70px"}}>
+            
+            <div style={{display:"flex",justifyContent:"space-around",flexWrap:"wrap",width:"28%",gap:"70px"}}>
                 <div>
                     <h2>COMPANY</h2>
                     <NavLink to="/" style={navLinkStyles} onClick={() => window.scrollTo(0,0)}><p>Home</p></NavLink>

@@ -17,14 +17,14 @@ const LatestCollections = () => {
     <div style={{display:"flex",justifyContent:"center"}}>
 
 
-        <div style={{width:"1700px",borderRadius:"30px",paddingTop:"30px",display:"flex",justifyContent:"center"}}>
+        <div style={{borderRadius:"30px",paddingTop:"30px",display:"flex",justifyContent:"center"}}>
             <div>
 
                 <div>
-                    <div style={{display:"grid",gridTemplateColumns:"repeat(5,300px)",justifyItems:"center",gap:"20px",width:"1580px"}}>
+                    <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",justifyItems:"center"}} className='container6'>
                     {products.slice(0,10).map((_,i)=>(
-                        <div>
-                            <Link to={`/product/${products[i]._id}`}><img src={products[i].image[0]} alt="" className='imag'/></Link>
+                        <div className='herobanner'>
+                            <Link to={`/product/${products[i]._id}`}><img src={products[i].image[0]} alt="" className='imag5'/></Link>
                             <p>{products[i].name}</p>
                             <p>${products[i].price}</p>
                         </div>))}

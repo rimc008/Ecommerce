@@ -49,7 +49,7 @@ const Orders = () => {
         <h1>Your Orders</h1>
       </div>
 
-      <div style={{display:"flex",justifyContent:"space-around",width:"1400px",fontSize:"25px",fontWeight:"bold",paddingTop:"20px",paddingBottom:"20px",paddingTop:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",background: "linear-gradient(to right,transparent 0%,pink 15%,pink 85%,transparent 100%)"}}>
+      <div style={{display:"flex",justifyContent:"space-around",fontSize:"25px",fontWeight:"bold",paddingTop:"20px",paddingBottom:"20px",paddingTop:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",background: "linear-gradient(to right,transparent 0%, #f90303ae 15%, #f90303ae 85%,transparent 100%)",}} className='container7'>
         <div style={{width:"450px",display:"flex",justifyContent:"center"}}>Product</div>
         <div style={{width:"100px",display:"flex",justifyContent:"center"}}>Price</div>
         <div style={{width:"150px",display:"flex",justifyContent:"center"}}>Pay Method</div>
@@ -58,7 +58,7 @@ const Orders = () => {
 
       {
         orders.map((item) => (
-          <div style={{display:"flex",justifyContent:"space-around",paddingTop:"20px",paddingBottom:"20px",borderBottom:"solid black 2px",width:"1400px"}}>
+          <div style={{display:"flex",justifyContent:"space-around",paddingTop:"20px",paddingBottom:"20px",borderBottom:"solid black 2px",width:"90%"}}>
 
             <div style={{display:"flex",width:"450px",gap:"20px"}}>
               <img src={item.image} alt="" style={{height:"100px",width:"90px",borderRadius:"15px"}}/>

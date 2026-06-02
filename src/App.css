@@ -1,15 +1,23 @@
-@keyframes gradientMove{
+html,
+body,
+#root {
+    height: 100%;
+}
 
-    0%{
-        background-position: 0% 50%;
+.parent{
+    display:block;
+}
+.screenresponse{
+    display:none;
+}
+
+@media (max-width: 815px){
+    .parent{
+        display:none;
     }
-
-    50%{
-        background-position: 100% 50%;
+    .screenresponse{
+        display:flex;
+        justify-content: center;
+        align-items: center;
     }
-
-    100%{
-        background-position: 0% 50%;
-    }
-
 }

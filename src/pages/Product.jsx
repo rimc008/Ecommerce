@@ -114,25 +114,25 @@ const Product = () => {
   return (
 
     <div>
-      <div style={{display:"grid",gridTemplateColumns:"1.5fr 2.5fr 3fr",marginTop:"50px"}}>
+      <div style={{display:"grid",gridTemplateColumns:"1.5fr 2.5fr 3fr",marginTop:"50px",gap:"2%"}}>
 
-        <div style={{display:"flex",flexDirection:"column",alignContent:"center",alignItems:"center",paddingLeft:"160px"}}>
-          {
-            product.image.map((item) => (
-              <div>
-                <img src={item} className="imag" onClick={handleChange3} alt="" style={{height:"180px",width:"fit-content",marginBottom:"5px",border:"solid black 3px",borderRadius:"10px"}}/>
-                
-              </div>
-            ))
-          }
+        <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"end",gap:"5px"}}>
+            {
+              product.image.map((item) => (
+                <div>
+                  <img src={item} className="imag" onClick={handleChange3} alt="" style={{height:"180px",width:"fit-content",border:"solid black 3px",borderRadius:"10px"}}/>
+                  
+                </div>
+              ))
+            }
         </div>
-        <div>
-          <img src={imageset} alt="" style={{height:"762px",width:"630px",borderRadius:"10px",border:"solid black 3px"}}/>
+        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+          <img src={imageset} alt="" style={{height:"98%",width:"95%",borderRadius:"10px",border:"solid black 3px"}}/>
           
         </div>
-        <div>
-          {
-            <div style={{width:"500px",display:"flex",flexDirection:"column"}}>
+        <div style={{width:"100%"}}>
+          
+            <div style={{display:"flex",flexDirection:"column"}} className='container8'>
 
               <div>
                 <h2>{product.name}</h2>
@@ -180,7 +180,7 @@ const Product = () => {
                 Easy return and refund policy</p>
               </div>
             </div>
-          }
+          
         </div>
 
       </div>

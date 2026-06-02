@@ -6,6 +6,7 @@ import account from './assets/image copy 4.png'
 import { motion,AnimatePresence } from 'framer-motion'
 import image2 from './assets/image copy 6.png'
 import { ShopContext } from './context/ShopContext'
+import { p } from 'framer-motion/client'
 
 
 
@@ -31,12 +32,12 @@ const navLinkStyles2 = {
     fontSize:"30px",
     paddingBottom:"2px",
     textDecoration:"None",
-    borderBottom:"solid #ec4899 4px",
+    borderBottom:"solid red 4px",
     transition:"all 0.2s ease-in-out",
     cursor:"pointer"
 };
 
-const Navbar = ({onSearchChange,visual,setGettoken}) => {
+const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
 
     const {cart} = useContext(ShopContext);
     
@@ -59,13 +60,14 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
     }
     return (
         <div style={{position:"sticky",top:"0",zIndex:"1000"}}>
-            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between", maxHeight:"fit-content" , padding:"8px",backgroundColor:"black"}}>
 
-                <div style={{width:"40%"}}>
-                <img src={image} alt="" style={{height:"65px" ,width:"75px", borderRadius:"15px",marginRight:"150px"}} /> 
+            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between", maxHeight:"max-content" , padding:"8px",backgroundColor:"black"}}>
+
+                <div>
+                    <img src={image} alt="" style={{height:"65px" ,width:"75px", borderRadius:"15px",marginRight:"150px"}} /> 
                 </div>   
 
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center",gap:"35px",width:"30%",justifyContent:"start"}}>
+                <div style={{flexGrow:1,display:"flex",flexDirection:"row",alignItems:"center",gap:"35px",justifyContent:"center"}}>
 
                     <NavLink to="/" onClick={() => setSelect(1)} style={select===1 ?navLinkStyles2 : navLinkStyles}>Home</NavLink>
                     <NavLink to="/collections" onClick={() => setSelect(2)} style={select===2 ?navLinkStyles2 : navLinkStyles}>Collections</NavLink>
@@ -74,9 +76,9 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
                 </div>
 
 
-                <div style={{display:"flex",justifyContent:"end",flexDirection:"row",alignItems:"center",gap:"20px",width:"30%"}}>
+                <div style={{flexShrink:1,flexBasis:"18%",display:"flex",gap:"5px",justifyContent:"space-evenly",flexDirection:"row",alignItems:"center"}}>
 
-                    <img src={search} alt="" style={{height:"50px" ,width:"55px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}} onClick={Search} search = {searchdress}/>
+                    <img src={search} alt="" style={{height:"50px" ,width:"auto", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}} onClick={Search} search = {searchdress}/>
 
                     <div>
                         {(visual === "Login")?<NavLink onClick={() => setSelect(4)} to="/login" style={select===4 ?navLinkStyles2 : navLinkStyles}>{visual}</NavLink>:
@@ -85,7 +87,7 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
 
                     <NavLink to="/cart">
                     
-                    <div style={{position:"relative"}}><img src={image2} alt="" style={{height:"70px",width:"70px", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/>
+                    <div style={{position:"relative"}}><img src={image2} alt="" style={{height:"70px",width:"auto", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/>
 
                         <div style={{position:"absolute",borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#5af26b",color:"black",textAlign:"center",top:10,right:10,fontWeight:"bold"}}>{cart.length}</div>
 
@@ -93,7 +95,7 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
 
                     </NavLink>
 
-                    <img title="Account" onClick={Change} src={account} alt="" style={{height:"60px" ,width:"60px", borderRadius:"15px",cursor:"pointer"}}/>
+                    <img title="Account" onClick={Change} src={account} alt="" style={{height:"60px" ,width:"auto", borderRadius:"15px",cursor:"pointer"}}/>
 
                     {(
                         <div style={{
@@ -108,18 +110,22 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
                         right: "20px",
                         transition: "all 0.3s ease",
                         opacity: show ? 1 : 0,
-                        height:show ? "200px" :" 0px",
+
+                        //for max-content or auto transition don't work very properly
+                        height:show ? gettoken ? "200px" : "130px" :" 0px",
                          overflow: "hidden"
-
-
                         
                         }}>
                             <p><NavLink to="/profile" style={navLinkStyles1}>Profile</NavLink></p>
                             <p><NavLink to="/orders" style={navLinkStyles1}>Orders</NavLink></p>
+
+                            {gettoken?
                             <p style={navLinkStyles1} onClick={() => {localStorage.removeItem("token")
                                 alert("Logged out")
                                 setGettoken(localStorage.getItem("token"))
-                            }}>Logout</p>
+                            }}>Logout</p>:
+                            null
+                            }
                         </div>
                     )}
                     
@@ -127,6 +133,7 @@ const Navbar = ({onSearchChange,visual,setGettoken}) => {
                 </div>
 
             </div>
+
             <div>
                 <AnimatePresence>
                     {searchdress && (

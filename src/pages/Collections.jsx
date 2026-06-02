@@ -5,6 +5,7 @@ import './LatestCollections.css'
 import { motion,AnimatePresence } from 'framer-motion'
 import Bottompage from './Bottompage.jsx'
 import {assets} from "../assets/assets.js"
+import { style } from 'framer-motion/client'
 
 
 
@@ -101,14 +102,12 @@ const Collections = ({search}) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         onAnimationComplete={() => window.scrollTo({top:0,behavior:"smooth" })}>
-    <div
-
-     style={{display:"grid",gridTemplateColumns:"1fr 2fr"}}>
-      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",height:"80vh",position:"sticky",top:"150px"}}>
+    <div className='layout'>
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",height:"80vh",position:"sticky",top:"150px"}} className='container4'>
 
         <div><h1>Filters</h1></div>
 
-        <div style={{display:"flex",border:"solid black 2px",borderRadius:"20px",width:"165px",height:"50px",alignItems:"center",paddingLeft:"75px",marginBottom:"30px",boxShadow:"7px 7px 0px black"}}>
+        <div style={{display:"flex",border:"solid black 2px",borderRadius:"20px",width:"165px",height:"50px",alignItems:"center",paddingLeft:"70px",marginBottom:"30px",boxShadow:"7px 7px 0px black"}}>
           <input type="checkbox" id="Men" name="Men" value="Men" style={{height:"20px",width:"20px" }}/>
             <label htmlFor="Men" style={{fontSize:"30px"}}>All</label>
         </div>
@@ -148,7 +147,9 @@ const Collections = ({search}) => {
       </div>
 
       <div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"40px",width:"102vw"}}>
+
+        <div style={{display:"flex",justifyContent:"center"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"40px"}} className='container3'>
             <h1>See Collections</h1>
             <select name="" id="" style={{fontSize:"25px",height:"50px",borderRadius:"10px",border:"solid black 3px",cursor:"pointer",backgroundColor:"black",color:"white",textAlign:"center"}} onChange={handleChange2}>
               <option value="" >Sort By</option>
@@ -156,25 +157,32 @@ const Collections = ({search}) => {
               <option value="decreasing">Decreasing price</option>
             </select>
         </div>
-
+        </div>
         
-        <div style={{display:"flex",width:"1580px",gap:"15px",flexWrap:"wrap",marginTop:"10px"}}>
+        <div style={{display:"flex",justifyContent:"center",flexWrap:"wrap",width:"100%",marginTop:"10px"}} className='container'>
 
           {
             finalProductList.length > 0 ? (finalProductList.map((item,i) => (
-              <div style={{position:"relative"}}>
-                <p style={{position:"absolute",top:"63%", left:20,zIndex:900,display:"flex",gap:"3px"}}>
+              <div className='aroundimg'>
 
-                  <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />
-                  <p style={{padding:0,margin:0,fontSize:"18px"}}>{item.rating}</p>
+                <div style={{position:"relative"}}>
+                
+                  <Link to={`/product/${item._id}`}><img src={item.image[0]} alt="" className='imag'/></Link>
+
+                  <p style={{position:"absolute", left:20,zIndex:900,display:"flex",gap:"3px"}} className='rating'>
+
+                    <img style={{height:"20px",width:"20px"}} src={assets.star_icon} alt="" />
+                    <p style={{padding:0,margin:0,fontSize:"18px"}}>{item.rating}</p>
 
                   </p>
-                <Link to={`/product/${item._id}`}><img src={item.image[0]} alt="" className='imag'/></Link>
-                <p>{item.name}</p>
-                <p>${item.price}</p>
+                </div>
+
+                  <p>{item.name}</p>
+                  <p>${item.price}</p>
+
               </div>
             ))):(
-              <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",fontSize:"40px",height:"400px"}}><p>No similar dress found</p></div>
+              <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",fontSize:"40px",height:"400px"}}><p>No similar dress found</p></div>
             )
           }
           

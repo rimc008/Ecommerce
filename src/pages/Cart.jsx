@@ -104,15 +104,15 @@ const Cart = ({price,setPrice}) => {
         onAnimationComplete={() => window.scrollTo({top:0,behavior:"smooth" })}>
     <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
-      <div style={{width:"1700px",textAlign:"center"}}><h1>Your Cart ({cart.length} {items})</h1></div>
+      <div style={{width:"90%",textAlign:"center"}}><h1>Your Cart ({cart.length} {items})</h1></div>
 
-      <div style={{display:"flex",width:"1700px",justifyContent:"space-between",fontSize:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",fontWeight:"bold",background: "linear-gradient(to right,transparent 0%,pink 15%,pink 85%,transparent 100%)",paddingRight:"20px"}}>
+      <div style={{display:"flex",width:"90%",justifyContent:"space-between",fontSize:"20px",borderBottom:"solid black 3px",borderTop:"solid black 3px",fontWeight:"bold",background: "linear-gradient(to right,transparent 0%, #f90303ae 15%, #f90303ae 85%,transparent 100%)",paddingRight:"20px"}}>
         <p style={{width:"500px",textAlign:"center"}}>Product</p>
         <p>Quantity</p>
         <p>Delete</p>
       </div>
       {cart.map((item) => (
-        <div style={{display:"flex",justifyContent:"space-between",borderBottom:"solid black 2px",width:"1700px"}}>
+        <div style={{display:"flex",justifyContent:"space-between",borderBottom:"solid black 2px",width:"90%"}}>
 
           <div style={{display:"flex",paddingBottom:"7px",paddingTop:"7px",width:"500px"}}>
 
@@ -153,28 +153,31 @@ const Cart = ({price,setPrice}) => {
 
     </div>
 
-    <div style={{ marginLeft:"100px",paddingTop:"50px"}}>
-      <h2>Subtotal ${price}</h2>
+    <div style={{display:"flex",justifyContent:"center",paddingTop:"50px"}}>
 
-      <div style={{borderBottom:"solid black 3px" , width:"1700px",display:"flex",justifyContent:"space-between",gap:"20px"}}>
-      
-        <h2 style={{paddingBottom:"5px"}}>Delivery Fee ${delivery_fee}</h2>
-        <h2>No Platform Fee</h2>
-      </div>
+      <div style={{width:"90%"}}>
+        <h2>Subtotal ${price}</h2>
 
-      <div style={{display:"flex"}}>
-        <h2>Amount To Pay ${price + delivery_fee}</h2>
-        <div style={{border:"solid black 3px",height:"50px",marginTop:"9px",marginLeft:"20px",width:"120px",textAlign:"center",borderRadius:"5px",backgroundColor:"black",color:"white",cursor:"pointer"}} className="imag3">
-          <NavLink to="/contact" style={navLinkStyles3}>
-          <h2 style={{margin:0,paddingTop:"10px"}}>Buy Now</h2></NavLink>
+        <div style={{width:"100%",display:"flex",borderBottom:"solid black 3px",justifyContent:"space-between",gap:"20px"}}>
+        
+          <h2 style={{paddingBottom:"5px"}}>Delivery Fee ${delivery_fee}</h2>
+          <h2>No Platform Fee</h2>
         </div>
-      </div>
 
+        <div style={{display:"flex"}}>
+          <h2>Amount To Pay ${price + delivery_fee}</h2>
+          <div style={{border:"solid black 3px",height:"50px",marginTop:"9px",marginLeft:"20px",width:"120px",textAlign:"center",borderRadius:"5px",backgroundColor:"black",color:"white",cursor:"pointer"}} className="imag3">
+            <NavLink to="/contact" style={navLinkStyles3}>
+            <h2 style={{margin:0,paddingTop:"10px"}}>Buy Now</h2></NavLink>
+          </div>
+        </div>
+
+      </div>
     </div>
 
 
     <div style={{display:"flex",justifyContent:"center",paddingTop:"20px"}}>
-      <div style={{textAlign:"center",width:"500px",height:"fit-content",border:"solid black 3px",borderRadius:"20px",color:"white",backgroundColor:"black",cursor:"pointer"}} className="imag3">
+      <div style={{textAlign:"center",width:"500px",border:"solid black 3px",height:"fit-content",borderRadius:"20px",color:"white",backgroundColor:"black",cursor:"pointer"}} className="imag3">
 
 
         <NavLink to="/collections" style={navLinkStyles3}><h1 style={{margin:0}}>Continue Shopping</h1></NavLink>

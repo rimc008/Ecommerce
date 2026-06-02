@@ -111,9 +111,9 @@ const handleChange15 = async() => {
 
            key: "rzp_test_SrIVRZZw2R5xpM",
 
-            amount: (price + 10),
+            amount: (price + 10) * 100,
 
-            currency: "USD",
+            currency: "INR",
 
             description: "Order Payment",
             
@@ -174,7 +174,7 @@ const handleChange15 = async() => {
 
 
   return (
-    <div>
+    <div style={{border:"solid black 3px",height:"118vh",display:"flex",flexDirection:"column",justifyContent:"center"}}>
       <h1 style={{textAlign:"center",marginBottom:"50px"}}>Order Amount</h1>
 
       <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>

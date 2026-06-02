@@ -33,34 +33,50 @@ function App() {
 
 
   return (
-    <div style={{background:"linear-gradient(to right, pink 0%, transparent 5%, transparent 95%, pink 100%)"}}>
 
-    <Navbar onSearchChange={collectionNew} search={search} setGettoken={setGettoken} visual={visual}/>
+    <div>
 
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About />} />
+      <div className='screenresponse' style={{justifyContent:"center",alignItems:"center",height:"125vh",backgroundColor:"black",color:"white",background:"linear-gradient(to right, #f911ca 0%, black 5%, black 95%, #f911ca 100%)"}}>
 
-        <Route path="/contact" element={<Contact firstname={firstname} setFirstname={setFirstname} specificaddress={specificaddress} setSpecificaddress={setSpecificaddress} pincode={pincode} setPincode={setPincode} phone={phone} setPhone={setPhone}/>} />
+        <div style={{textAlign:"center",width:"80%"}}>
+          <h1>⚠️ Unsupported Screen Size</h1>
+          <p style={{fontSize:"30px"}}>
+            This website is optimized for tablets,laptops and desktops.
+            Please use a larger screen for the best experience.
+          </p>
+        </div>
 
-        <Route path="/cart" element={<Cart price={price} setPrice={setPrice}/>} />
+      </div>
 
-        <Route path="/collections" element={<Collections search={search}/>} />
+      <div style={{background:"linear-gradient(to right, #f4999970 0%, transparent 5%, transparent 95%, #f4999970 100%)"}} className='parent'>
 
-        <Route path="/login" element={<Login visual={visual} setGettoken={setGettoken}/>} />
+      <Navbar onSearchChange={collectionNew} search={search} gettoken={gettoken} setGettoken={setGettoken} visual={visual}/>
 
-        <Route path="/placeorder" element={<PlaceOrder price={price} firstname={firstname} specificaddress={specificaddress} pincode={pincode} phone={phone}/>} />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About />} />
 
-        <Route path="/product/:productId" element={<Product/>} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/latestCollections" element={<LatestCollections/>} />
+          <Route path="/contact" element={<Contact firstname={firstname} setFirstname={setFirstname} specificaddress={specificaddress} setSpecificaddress={setSpecificaddress} pincode={pincode} setPincode={setPincode} phone={phone} setPhone={setPhone}/>} />
 
-        <Route path="/successorder" element={<Successorder/>} />
-        
-        
-      </Routes>
+          <Route path="/cart" element={<Cart price={price} setPrice={setPrice}/>} />
 
+          <Route path="/collections" element={<Collections search={search}/>} />
+
+          <Route path="/login" element={<Login visual={visual} setGettoken={setGettoken}/>} />
+
+          <Route path="/placeorder" element={<PlaceOrder price={price} firstname={firstname} specificaddress={specificaddress} pincode={pincode} phone={phone}/>} />
+
+          <Route path="/product/:productId" element={<Product/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/latestCollections" element={<LatestCollections/>} />
+
+          <Route path="/successorder" element={<Successorder/>} />
+          
+          
+        </Routes>
+
+      </div>
     </div>
   )
 }

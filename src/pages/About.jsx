@@ -41,12 +41,12 @@ const About = () => {
       <div style={{textAlign:"center",marginBottom:"40px"}}>
         <h1>About Us</h1>
       </div>
-      <div style={{display:"grid",gridTemplateColumns:"2fr 3fr",marginLeft:"80px",width:"1700px",gap:"20px"}}>
+      <div style={{display:"grid",gridTemplateColumns:"2fr 3fr",marginLeft:"80px",gap:"5%"}}>
         <div style={{display:"flex",justifyContent:"center"}}>
           <img src={image7} style={{height:"500px",width:"450px",borderRadius:"20px",border:"solid black 3px",boxShadow:"10px 10px 0px black"}} alt="" />
         </div>
 
-        <div style={{fontSize:"25px",width:"1000px"}}>
+        <div style={{fontSize:"25px",width:"80%"}}>
           <p>We are a modern e-commerce platform dedicated to offering high-quality products at competitive prices. Our goal is to make online shopping simple, convenient, and reliable for everyone.<br />We carefully select our products to ensure they meet our standards of quality and value.From browsing to checkout, we focus on providing a smooth and secure experience.Customer satisfaction is at the core of our approach, and we are committed to delivering excellent service and building long-term trust with our customers</p>
 
           <h4>Our Mission</h4>
@@ -54,12 +54,12 @@ const About = () => {
         </div>
       </div>
 
-      <div style={{marginLeft:"180px",marginTop:"100px"}}>
+      <div style={{display:"flex",flexDirection:"column",alignItems:"center",marginTop:"100px"}}>
         <h1>Why Choose Us?</h1>
 
-        <div style={{display:"flex",gap:"70px"}}>
+        <div style={{display:"flex",gap:"5%",justifyContent:"center"}}>
           {whyChooseUs.map((item)=> (
-            <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",width:"300px",border:"solid black 3px",borderRadius:"20px",padding:"20px",boxShadow:"10px 10px 0px black"}}>
+            <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",maxWidth:"15%",border:"solid black 3px",borderRadius:"20px",padding:"20px",boxShadow:"10px 10px 0px black"}}>
               <h2>{item.name}</h2>
               {item.description}
             </div>

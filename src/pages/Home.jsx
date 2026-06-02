@@ -27,16 +27,16 @@ const Home = () => {
 
       <div style={{paddingTop:"100px"}}>
         </div> 
-      <div style = {{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+      <div style = {{display:"flex",flexDirection:"row",flexShrink:1,justifyContent:"center",height:"20%"}}>
 
-        <div style = {{display:"flex",flexDirection:"row",justifyContent:"space-between" ,border:"solid black 4px", borderRadius:"30px",width:"1200px",boxShadow:"13px 13px 0px black"}}>
+        <div style = {{display:"flex",flexWrap:"wrap",flexDirection:"row",justifyContent:"space-between" ,border:"solid black 4px", borderRadius:"30px",width:"65%",boxShadow:"13px 13px 0px black",height:"60%"}}>
 
-          <div style = {{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",width:"700px"}}>
+          <div style = {{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}} className='bannertext'>
             <a href="#latestcollections" className='link1'><h1>New arrival</h1></a>
             <a href="#bestselling" className='link1'><h1>Best sellers </h1></a>
             <h1>For you</h1>
           </div>
-          <img src={fashion} alt="" style={{height:"600px",width:"500px",borderRadius:"30px"}}/>
+          <img src={fashion} alt="" style={{display:"flex",flexShrink:1,borderRadius:"30px"}} className='banner'/>
 
         </div>
 
@@ -52,7 +52,7 @@ const Home = () => {
       </div>
 
       <div id="bestselling" style={{paddingTop:"90px"}}>
-        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",borderRadius:"30px",background:"linear-gradient(to right , transparent 0%, black 25%, black 75%,transparent 100%)"}}>
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"center",background:"linear-gradient(to right , transparent 0%, black 25%, black 75%,transparent 100%)"}}>
           <h1 style={{color:"white",padding:0,margin:7}}>BestSeller</h1>
         </div>
         <div style={{paddingTop:"20px"}}><BestSelling/></div>
