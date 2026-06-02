@@ -114,7 +114,7 @@ const Product = () => {
   return (
 
     <div>
-      <div style={{display:"grid",gridTemplateColumns:"1.5fr 2.5fr 3fr",marginTop:"50px",gap:"2%"}}>
+      <div style={{display:"grid",gridTemplateColumns:"1.5fr 2.5fr 3fr",marginTop:"50px",gap:"2.1%"}}>
 
         <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"end",gap:"5px"}}>
             {
