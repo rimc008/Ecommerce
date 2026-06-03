@@ -9,7 +9,8 @@ const navLinkStyles5 = {
     fontSize:"25px",
     textDecoration:"None",
     borderRadius:"10px",
-    fontFamily:"Prata"
+    fontFamily:"Prata",
+    width:"50%"
     
 };
 
@@ -80,7 +81,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
         onAnimationComplete={() => window.scrollTo(0,0)}>
       <div style={{fontSize:"30px",display:"flex",justifyContent:"center"}}>
 
-        <div>
+        <div style={{width:"70%"}}>
 
         <div style={{textAlign:"center",borderBottom:"solid black 3px"}}>
           <h3>Shipping Address</h3>
@@ -99,11 +100,14 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
         <form action="#" method="post" style={{display:"flex",flexDirection:"column",gap:"20px",marginTop:"40px"}}>
 
-          <div style={{display:"flex",gap:"100px",borderBottom:"solid black 2px",
+          <div style={{display:"flex",justifyContent:"space-between",borderBottom:"solid black 2px",
     paddingBottom:"25px"}}>
             <div>
               <label htmlFor="firstname"> First Name: </label>
+
+            
               <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)}required/>
+              
             </div>
 
             <div>
@@ -139,7 +143,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           <div style={navLinkStyles6}>
             <label htmlFor="address">Address: </label>
-            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"800px",fontFamily:"Prata"}} placeholder='Your address' required/>
+            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"80%",fontFamily:"Prata"}} placeholder='Your address' required/>
           </div>
 
           <div style={navLinkStyles6}>
