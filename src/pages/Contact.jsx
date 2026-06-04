@@ -10,8 +10,7 @@ const navLinkStyles5 = {
     textDecoration:"None",
     borderRadius:"10px",
     fontFamily:"Prata",
-    width:"50%"
-    
+    width:"50%"   
 };
 
 const navLinkStyles6 ={
