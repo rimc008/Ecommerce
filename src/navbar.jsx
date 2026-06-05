@@ -89,7 +89,7 @@ const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
                     
                     <div style={{position:"relative"}}><img src={image2} alt="" style={{height:"70px",width:"auto", borderRadius:"15px",backgroundColor:"black",cursor:"pointer"}}/>
 
-                        <div style={{position:"absolute",borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#5af26b",color:"black",textAlign:"center",top:10,right:10,fontWeight:"bold"}}>{cart.length}</div>
+                        {localStorage.getItem("token") && <div style={{position:"absolute",borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#5af26b",color:"black",textAlign:"center",top:10,right:10,fontWeight:"bold"}}>{cart.length}</div>}
 
                     </div>
 

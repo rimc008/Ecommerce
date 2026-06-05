@@ -20,6 +20,8 @@ const navLinkStyles6 ={
 
 const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pincode,setPincode,phone,setPhone}) => {
 
+  const [submit,setSubmit] = useState(false);
+
   const [fetching,setFetching] = useState(false);
 
   const [coords,setCoords] = useState(null);
@@ -59,7 +61,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
           
         }
         finally{
-          setFetching(false)
+          setFetching(false);
         }
       }
       
@@ -67,6 +69,13 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
   }
 
   console.log(address);
+
+  const handleSubmit3 = (e) => {
+    
+    e.preventDefault();
+    setSubmit(true);
+
+  }
   
 
   return (
@@ -97,7 +106,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
           {fetching && <h4>Fetching Location...</h4>}
         </div>
 
-        <form action="#" method="post" style={{display:"flex",flexDirection:"column",gap:"20px",marginTop:"40px"}}>
+        <form onSubmit={(e) => handleSubmit3(e)} action="" method="post" style={{display:"flex",flexDirection:"column",gap:"20px",marginTop:"40px"}}>
 
           <div style={{display:"flex",justifyContent:"space-between",borderBottom:"solid black 2px",
     paddingBottom:"25px"}}>
@@ -105,7 +114,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
               <label htmlFor="firstname"> First Name: </label>
 
             
-              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)}required/>
+              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)} required/>
               
             </div>
 
@@ -157,11 +166,15 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           <div  style={{display:"flex",justifyContent:"center",gap:"30px",marginTop:"20px"}}>
 
-            <button className="imag3" type="submit" style={{width:"250px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",height:"50px",color:"white",fontFamily:"Prata"}}>Confirm Address</button>
 
-            <NavLink to="/placeorder">
-              <button className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Procced To Pay</button>
-            </NavLink>
+              { (!submit) && 
+              <button type="submit" className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Confirm address</button>}
+
+              { submit && 
+              <NavLink to="/placeorder">
+                <button className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Procced To Pay</button>
+              </NavLink>}
+
 
           </div>
 

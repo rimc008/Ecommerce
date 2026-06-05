@@ -12,7 +12,7 @@ import {assets} from "../assets/assets.js"
 const Product = () => {
 
   // global things get using usecontext
-  const {products,objt,setObjt,setCart} = useContext(ShopContext)
+  const {products,objt,setObjt,cart,setCart} = useContext(ShopContext)
 
   console.log(products);
   
@@ -25,6 +25,7 @@ const Product = () => {
   //usestate hooks
   const [imageset,setImageset] = useState(product.image[0]);
   const [sizedecide,setSizedecide] = useState(false);
+  let [cartload,setCartload] = useState(0);
   let addcartvalidator = true;
   const [bgdecider,setBgdecider] = useState(false);
   const [bgdecider2,setBgdecider2] = useState(null);
@@ -37,6 +38,55 @@ const Product = () => {
 
     setBgdecider2(item1)
   }
+
+    // to show items in cart 
+    useEffect(() =>  {
+  
+      const getitemfunction = async(e) => {
+  
+        try {
+  
+          const res = await fetch("http://localhost:4001/api/product/all1",
+          {
+  
+            method:"GET",
+            headers : {
+            "Content-Type":"application/json",
+            Authorization : `Bearer ${localStorage.getItem("token")}`
+            }
+  
+          })
+  
+          const data7 = await res.json()
+  
+          if (data7.success){
+            
+            const newcart = data7.data
+            setCart(newcart)          
+          }
+  
+          else{
+  
+            console.log(1);
+            
+            alert(data7.message)
+          }
+  
+        } catch (error) {
+          
+          console.log(2);
+          
+          alert(error.message)
+        }
+  
+      }
+  
+      console.log(cart);
+      
+      getitemfunction();
+      
+  
+    },[cartload])//useeffect hook only trigger if the dependency has the potential to re-render the componenet . so , the dependency must be a state variable not a normal variable.
 
   const handleChange8 = async(e) => {
 
@@ -57,6 +107,7 @@ const Product = () => {
         const data = await res.json();
 
         if(data.success){
+          setCartload(cartload+1)
           alert("Item Added To Cart")
           
         }
@@ -72,34 +123,21 @@ const Product = () => {
     }
 
   }
+
   // items append to cart list(push would not work as it returns size only)(synchronous)
   const handleChange4 = () => {
 
     //synchronous purpose
     if (sizedecide && addcartvalidator){
-      const nextsetObjt = {
-        name: product.name,
-        price : product.price,
-        description : product.description,
-        image : product.image[0],
-        category : product.category,
-        subCategory : product.subcategory,
-        _id : product._id,
-        size: bgdecider2
-      }
 
       setBgdecider(!bgdecider)
-      setObjt(nextsetObjt)
 
-      //append items in cart list but using spread operator not push of js 
-      setCart((a) => [...a , nextsetObjt])
     }
 
     else{
       if(!sizedecide) {alert("Set a size first")}
     }
   }
-
 
   const handleChange3 = (e) => {
     const {src} = e.target;

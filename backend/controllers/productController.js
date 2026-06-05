@@ -5,21 +5,22 @@ export const addProduct = async(req,res) => {
 
     try {
     const {name,price,image,size,id} = req.body;
-    const presentalready = await Product1.findOne({id,size})
+    const userid = req.user.id;
+
+    const presentalready = await Product1.findOne({id,size,userid})
 
     if (presentalready){
-        res.json({success:false,message:"Already In cart"})
+        return res.json({success:false,message:"Already In cart"})
     }
 
 
     console.log(req.user);
-    const user = req.user.id;
 
     const data1 = await Product1.create({
-        name,price,image,size,id
+        name,price,image,size,id,userid
     })
 
-    res.json({success:true,message:"item added", createdBy : user}) 
+    res.json({success:true,message:"item added"}) 
 
     } catch (error) {
         res.json({success:false, message: error.message})
@@ -27,10 +28,20 @@ export const addProduct = async(req,res) => {
 
 }
 
-
 //get all added item
+export const all11 = async(req, res) => {
+      
+  const data9 = await Product1.find();
+
+  res.json({success:true,data9});
+}
+
+
 export const all1 = async(req, res) => {
-  const data = await Product1.find();
+      
+  const data_new = await Product1.find();
+
+  const data = data_new.filter((item) => (item.userid === req.user.id))
 
   res.json({success:true,data});
 }
@@ -42,6 +53,8 @@ export const deleteProduct = async(req,res) => {
     try {
         const {id,size} = req.body;
         const data2 = await Product1.findOneAndDelete({id,size});
+
+        if(!data2) {return res.json({success:false,message:"item not found"})}
 
         res.json({success:true,message:"Item Deleted"});
 

@@ -37,13 +37,19 @@ const Cart = ({price,setPrice}) => {
   const [idfrdel,setIdfrdel] = useState([])
 
   console.log(quantity);
+
   
-
-
+  // this function is to delete the item from database
   const handleChange9 = async(id,size) => {
 
+    console.log(cart);
+    
+    console.log("calling handle change 9");
+    
     const nextidfrdel = cart.filter((item) => item._id === id)
     setIdfrdel(nextidfrdel)
+    console.log(nextidfrdel);
+    
 
     try {
       const res = await fetch("http://localhost:4001/api/product/deleteitem",
@@ -52,7 +58,7 @@ const Cart = ({price,setPrice}) => {
           headers : {
             "Content-Type":"application/json"
           },
-          body: JSON.stringify({id : nextidfrdel[0]._id , size:size})
+          body: JSON.stringify({id : nextidfrdel[0].id , size:size})
         }
       )
 
@@ -71,6 +77,7 @@ const Cart = ({price,setPrice}) => {
     }
   }
 
+  // this function is to delete the item from local storage cart
   const handleChange5 =(id,size) => {
     const nextcart = cart.filter((item) => !(item._id === id && item.size === size))
     setCart(nextcart);
@@ -96,12 +103,16 @@ const Cart = ({price,setPrice}) => {
   return (
 
     <AnimatePresence>
-    <motion.div
+    <motion.div style={{height:"100vh"}}
     initial={{ opacity: 0 }}
         animate={{ opacity: 1}}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         onAnimationComplete={() => window.scrollTo({top:0,behavior:"smooth" })}>
+
+    {localStorage.getItem("token") ?
+      
+    <div>
     <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
 
       <div style={{width:"90%",textAlign:"center"}}><h1>Your Cart ({cart.length} {items})</h1></div>
@@ -185,9 +196,17 @@ const Cart = ({price,setPrice}) => {
       </div>
     </div>
 
+    </div>
+    : 
+    <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"35%"}}>
+      <h1>Please log in or sign up first.</h1>
+    </div> }
+
+
       <div>
         <Bottompage />
       </div>
+
     </motion.div>
     </AnimatePresence>
   )
