@@ -4,20 +4,20 @@ From browsing to checkout—an end-to-end e-commerce solution powered by React, 
 ## A little Preview
 https://github.com/user-attachments/assets/985da2e8-8990-464e-89a1-e9c119dc3110
 
-## Features
-🔐 Secure User Authentication using JWT-based login and registration.
-🛒 Shopping Cart Management with add, update, and remove item functionality.
-💳 Razorpay Payment Gateway Integration for secure online payments.
-📦 Order Placement & Tracking with dedicated order management.
-👤 User-Specific Orders ensuring customers can view only their own orders.
-🏪 Admin Dashboard for product and order management.
-🔍 Product Browsing & Search with category and collection views.
-📱 Responsive UI optimized for tablets and desktop devices.
-⚡ Modern React Frontend with smooth navigation and interactive user experience.
-🗄️ MongoDB Database Integration for persistent storage of users, products, carts, and orders.
-🌐 RESTful API Architecture built with Node.js and Express.
-🛡️ Protected Routes & Authorization to secure sensitive operations.
-🎨 Clean and Intuitive User Interface focused on usability and performance.
+## Features✨
+* 🔐 Secure User Authentication using JWT-based login and registration.
+* 🛒 Shopping Cart Management with add, update, and remove item functionality.
+* 💳 Razorpay Payment Gateway Integration for secure online payments.
+* 📦 Order Placement & Tracking with dedicated order management.
+* 👤 User-Specific Orders ensuring customers can view only their own orders.
+* 🏪 Admin Dashboard for product and order management.
+* 🔍 Product Browsing & Search with category and collection views.
+* 📱 Responsive UI optimized for tablets and desktop devices.
+* ⚡ Modern React Frontend with smooth navigation and interactive user experience.
+* 🗄️ MongoDB Database Integration for persistent storage of users, products, carts, and orders.
+* 🌐 RESTful API Architecture built with Node.js and Express.
+* 🛡️ Protected Routes & Authorization to secure sensitive operations.
+* 🎨 Clean and Intuitive User Interface focused on usability and performance.
 
 ## Folder structure📁
 ## 📂 Project Structure
@@ -168,5 +168,6 @@ npm run dev
 cd admin
 npm run dev
 ```
+
 ## That's it 
 Liked the hardwork ? Give this repo a ⭐
