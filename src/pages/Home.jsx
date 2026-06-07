@@ -34,7 +34,7 @@ const Home = () => {
           <div style = {{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}} className='bannertext'>
             <a href="#latestcollections" className='link1'><h1>New arrival</h1></a>
             <a href="#bestselling" className='link1'><h1>Best sellers </h1></a>
-            <h1>For you</h1>
+            
           </div>
           <img src={fashion} alt="" style={{display:"flex",flexShrink:1,borderRadius:"30px"}} className='banner'/>
 

@@ -36,12 +36,16 @@ export const all11 = async(req, res) => {
   res.json({success:true,data9});
 }
 
-
+// see the added to cart items
 export const all1 = async(req, res) => {
       
   const data_new = await Product1.find();
 
   const data = data_new.filter((item) => (item.userid === req.user.id))
+
+  if (data.length === 0) {
+    return res.json({success:false,message:"Empty Cart"})
+  }
 
   res.json({success:true,data});
 }

@@ -6,6 +6,7 @@ import Bottompage from './Bottompage';
 import { NavLink } from 'react-router-dom';
 import './LatestCollections.css'
 import {motion, AnimatePresence } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 const navLinkStyles3 = {
     color: "white",
@@ -13,7 +14,7 @@ const navLinkStyles3 = {
     textDecoration:"None",
 };
 
-const Cart = ({price,setPrice}) => {
+const Cart = ({price,setPrice,cartempty,ondelete,setOndelete}) => {
 
   const {cart,setCart,delivery_fee} = useContext(ShopContext);
   
@@ -65,10 +66,13 @@ const Cart = ({price,setPrice}) => {
       const data = await res.json();
 
       if(data.success){
-        alert("Item Deleted");
+        setOndelete(ondelete+1)
+        toast.success("Item Deleted");
+        console.log(cartempty);
+        
       }
       else{
-        alert(data.message);
+        toast.error(data.message);
       }
 
     } catch (error) {
@@ -103,14 +107,16 @@ const Cart = ({price,setPrice}) => {
   return (
 
     <AnimatePresence>
-    <motion.div style={{height:"100vh"}}
+    <motion.div
     initial={{ opacity: 0 }}
         animate={{ opacity: 1}}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         onAnimationComplete={() => window.scrollTo({top:0,behavior:"smooth" })}>
 
-    {localStorage.getItem("token") ?
+    {localStorage.getItem("token") ? (cartempty === "Empty Cart" ? <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}>
+      <h1>{cartempty}</h1>
+    </div> :
       
     <div>
     <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
@@ -196,9 +202,9 @@ const Cart = ({price,setPrice}) => {
       </div>
     </div>
 
-    </div>
+    </div>)
     : 
-    <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"35%"}}>
+    <div style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50vh"}}>
       <h1>Please log in or sign up first.</h1>
     </div> }
 

@@ -7,8 +7,8 @@ const Successorder = () => {
     <div
       style={{
         background: "linear-gradient(to top,black,white,#ec1681)",
-        height: "110vh", // Changed from 110vh to perfectly fit the screen
-        width: "124vw",  // Explicitly lock the width too
+        height: "120vh", // Changed from 110vh to perfectly fit the screen
+        width: "100%",  // Explicitly lock the width too
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

@@ -6,7 +6,7 @@ export const verifyToken = async(req,res,next) => {
     
     //node automatically convert Authorization to authorization in object
     //{
-    //   host: 'localhost:4000',
+    //   host: 'localhost:4001',
     //   authorization: 'Bearer abc123'
     // }
     

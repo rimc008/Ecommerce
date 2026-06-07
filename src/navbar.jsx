@@ -7,6 +7,7 @@ import { motion,AnimatePresence } from 'framer-motion'
 import image2 from './assets/image copy 6.png'
 import { ShopContext } from './context/ShopContext'
 import { p } from 'framer-motion/client'
+import toast from "react-hot-toast";
 
 
 
@@ -23,7 +24,7 @@ const navLinkStyles1 = {
     fontWeight : "bold",
     fontSize:"25px",
     textDecoration:"None",
-    cursor:"pointer"
+    cursor:"pointer",
 };
 
 const navLinkStyles2 = {
@@ -39,7 +40,7 @@ const navLinkStyles2 = {
 
 const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
 
-    const {cart} = useContext(ShopContext);
+    const {cart,setCart} = useContext(ShopContext);
     
     const [select,setSelect] = useState(0)
     const [show,setShow] = useState(false);
@@ -110,6 +111,7 @@ const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
                         right: "20px",
                         transition: "all 0.3s ease",
                         opacity: show ? 1 : 0,
+                        boxShadow: "3px 3px 10px black",
 
                         //for max-content or auto transition don't work very properly
                         height:show ? gettoken ? "200px" : "130px" :" 0px",
@@ -122,6 +124,7 @@ const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
                             {gettoken?
                             <p style={navLinkStyles1} onClick={() => {localStorage.removeItem("token")
                                 alert("Logged out")
+                                setCart([])
                                 setGettoken(localStorage.getItem("token"))
                             }}>Logout</p>:
                             null

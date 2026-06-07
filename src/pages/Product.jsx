@@ -5,11 +5,12 @@ import { button, div, p } from 'framer-motion/client';
 import './LatestCollections.css'
 import Bottompage from './Bottompage.jsx';
 import {assets} from "../assets/assets.js"
+import toast from "react-hot-toast";
 
 
 
 
-const Product = () => {
+const Product = ({cartload,setCartload}) => {
 
   // global things get using usecontext
   const {products,objt,setObjt,cart,setCart} = useContext(ShopContext)
@@ -25,7 +26,6 @@ const Product = () => {
   //usestate hooks
   const [imageset,setImageset] = useState(product.image[0]);
   const [sizedecide,setSizedecide] = useState(false);
-  let [cartload,setCartload] = useState(0);
   let addcartvalidator = true;
   const [bgdecider,setBgdecider] = useState(false);
   const [bgdecider2,setBgdecider2] = useState(null);
@@ -38,55 +38,6 @@ const Product = () => {
 
     setBgdecider2(item1)
   }
-
-    // to show items in cart 
-    useEffect(() =>  {
-  
-      const getitemfunction = async(e) => {
-  
-        try {
-  
-          const res = await fetch("http://localhost:4001/api/product/all1",
-          {
-  
-            method:"GET",
-            headers : {
-            "Content-Type":"application/json",
-            Authorization : `Bearer ${localStorage.getItem("token")}`
-            }
-  
-          })
-  
-          const data7 = await res.json()
-  
-          if (data7.success){
-            
-            const newcart = data7.data
-            setCart(newcart)          
-          }
-  
-          else{
-  
-            console.log(1);
-            
-            alert(data7.message)
-          }
-  
-        } catch (error) {
-          
-          console.log(2);
-          
-          alert(error.message)
-        }
-  
-      }
-  
-      console.log(cart);
-      
-      getitemfunction();
-      
-  
-    },[cartload])//useeffect hook only trigger if the dependency has the potential to re-render the componenet . so , the dependency must be a state variable not a normal variable.
 
   const handleChange8 = async(e) => {
 
@@ -108,12 +59,12 @@ const Product = () => {
 
         if(data.success){
           setCartload(cartload+1)
-          alert("Item Added To Cart")
+          toast.success("Item Added To Cart")
           
         }
         else{
           addcartvalidator = false
-          alert(data.message);
+          toast.error(data.message);
         }
 
       } catch (error) {
@@ -135,7 +86,7 @@ const Product = () => {
     }
 
     else{
-      if(!sizedecide) {alert("Set a size first")}
+      if(!sizedecide) {toast.error("Set a size first")}
     }
   }
 
