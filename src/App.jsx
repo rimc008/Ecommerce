@@ -70,6 +70,8 @@ function App() {
       
               else{
 
+                console.log("cart related");
+                
                 if(data7.message === "Empty Cart"){
                   setCartempty(data7.message)
                 }
@@ -113,7 +115,7 @@ function App() {
 
       </div>
 
-      <div style={{background:"linear-gradient(to right, #f4999970 0%, transparent 5%, transparent 95%, #f4999970 100%)"}} className='parent'>
+      <div style={{background:"linear-gradient(to right, #f4b3d7 0%, transparent 15%, transparent 85%, #f4b3d7 100%)"}} className='parent'>
 
        <Toaster position="top-center" 
        containerStyle={{

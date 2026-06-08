@@ -149,9 +149,11 @@ const Navbar = ({onSearchChange,gettoken,visual,setGettoken}) => {
                     style={{display:"flex",justifyContent:"center",marginTop:"20px"}}>
 
 
+                        <div style={{display:"flex",height:"max-content",width:"max-content",boxShadow:"3px 3px 10px black",borderRadius:"10px"}}>
                         <input type="text" placeholder='Search Items' style={{display:"flex",justifyContent:"center",height:"50px",width:"270px",borderRadius:"10px 0px 0px 10px",fontSize:"20px"}} onChange={onSearchChange}/>
                         
-                        <NavLink style={{textDecoration:"None"}} to="/collections"><p style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50px",width:"100px",border:"solid black 3px",color:"#ffff",backgroundColor:"black",paddingTop:0,marginTop:0,borderRadius:"00px 10px 10px 0px",fontSize:"20px"}}>Search</p></NavLink>
+                        <NavLink style={{textDecoration:"None"}} to="/collections"><p style={{display:"flex",justifyContent:"center",alignItems:"center",height:"50px",width:"100px",border:"solid black 3px",color:"#ffff",backgroundColor:"black",margin:0,borderRadius:"00px 10px 10px 0px",fontSize:"20px"}}>Search</p></NavLink>
+                        </div>
 
                     </motion.div>
 

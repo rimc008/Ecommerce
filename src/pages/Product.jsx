@@ -97,6 +97,10 @@ const Product = ({cartload,setCartload}) => {
   }
 
   useEffect(() => {
+      setImageset(product.image[0])//remember why this useEffect is important because if you    place this imageset onclcik on image it ould not update because onClick runs first even before the product updates. That is totally a timming issue not logical issue.
+    },[product])
+    
+  useEffect(() => {
     window.scrollTo(0,0)
   },[])
 

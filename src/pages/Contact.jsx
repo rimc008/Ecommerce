@@ -51,9 +51,9 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           const data = await res.json();
 
-          setAddress(data.address);
-          setPincode(data.address.postcode);
-          setSpecificaddress(data.display_name)
+          setAddress(data.address || "");
+          setPincode(data.address.postcode || "");
+          setSpecificaddress(data.display_name || "");
 
         } catch (error) {
           console.log(error);
@@ -151,7 +151,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           <div style={navLinkStyles6}>
             <label htmlFor="address">Address: </label>
-            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"80%",fontFamily:"Prata"}} placeholder='Your address' required/>
+            <input value={specificaddress}  onChange={(e) => setSpecificaddress(e.target.value)} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"80%",fontFamily:"Prata"}} placeholder='Your address' required/>
           </div>
 
           <div style={navLinkStyles6}>
