@@ -9,8 +9,6 @@ const LatestCollections = () => {
     const {products} = useContext(ShopContext)
     console.log(products);
     
-    
-
 
   return (
 

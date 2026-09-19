@@ -1,0 +1,15 @@
+*   [33m601a63a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Merge branch 'updatedversion2'
+[31m|[m[32m\[m  
+[31m|[m * [33me6bab5f[m[33m ([m[1;32mupdatedversion2[m[33m)[m unstableversion1
+* [32m|[m   [33md84f4ed[m Merge branch 'updatedversion3'
+[33m|[m[34m\[m [32m\[m  
+[33m|[m * [32m|[m [33m475bed5[m[33m ([m[1;32mupdatedversion3[m[33m)[m slight improvement
+* [34m|[m [32m|[m   [33m4a965ae[m[33m ([m[1;31morigin/main[m[33m)[m Merge branch 'updatedversion4'
+[35m|[m[36m\[m [34m\[m [32m\[m  
+[35m|[m * [34m|[m [32m|[m [33mf442bbc[m[33m ([m[1;32mupdatedversion4[m[33m)[m a very stable version
+[35m|[m * [34m|[m [32m|[m [33m4ef7e66[m[33m ([m[1;31morigin/updatedversion4[m[33m)[m backend more stable version
+[35m|[m [34m|[m[34m/[m [32m/[m  
+[35m|[m * [32m|[m [33med397ec[m[33m ([m[1;31morigin/updatedversion3[m[33m)[m stable version3
+[35m|[m * [32m|[m [33ma888375[m[33m ([m[1;32mupdatedversion1[m[33m)[m stable version2
+[35m|[m [32m|[m[32m/[m  
+[35m|[m * [33mdb69d78[m[33m ([m[1;31morigin/updatedversion1[m[33m)[m stable version2

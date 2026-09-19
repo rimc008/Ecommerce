@@ -20,8 +20,10 @@ const Product = ({cartload,setCartload}) => {
 
   // parameter indentical or not 
   let params = useParams();
-  const product = products.find(p => p._id == params.productId)
+  const product = products.find(p => p._id === params.productId)
 
+  console.log(product);
+  
 
   //usestate hooks
   const [imageset,setImageset] = useState(product.image[0]);
@@ -155,7 +157,7 @@ const Product = ({cartload,setCartload}) => {
               <div style={{marginTop:"40px"}}>
                 <h4>Select Size</h4>
                 <div>
-                  {product.size.map((item1) => (
+                  {product.sizes.map((item1) => (
                     <button style={{height:"40px",width:"45px",fontSize:"17px",marginRight:"10px",borderRadius:"5px",backgroundColor:bgdecider2==item1? "grey":""}} className="imag2" onClick={()=>sizedecider(item1)}>
                       {item1}
                     </button>
