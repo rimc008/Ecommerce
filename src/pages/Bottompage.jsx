@@ -51,7 +51,7 @@ const Bottompage = () => {
 
             <div style={{display:"flex",flexDirection:"column",width:"30%",}}>
                 <img src={image} alt="" style={{height:"70px",width:"70px"}}/>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolorem doloremque temporibus veritatis magni quia, tempora quisquam possimus maxime nobis?</p>
+                <p>We are dedicated to providing high-quality products, excellent customer service, and a seamless shopping experience for customers worldwide.</p>
             </div>
             
             <div style={{display:"flex",justifyContent:"space-around",flexWrap:"wrap",width:"28%",gap:"70px"}}>

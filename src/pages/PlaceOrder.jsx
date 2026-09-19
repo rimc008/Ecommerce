@@ -19,11 +19,13 @@ const handleChange15 = async() => {
     // 1. Fetch cart products
     const res1 = await fetch(
       "http://localhost:4001/api/product/all1",
+      
       {
         method:"GET",
 
         headers : {
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          Authorization : `Bearer ${localStorage.getItem("token")}`
         }
       }
     );
@@ -44,7 +46,8 @@ const handleChange15 = async() => {
               method:"POST",
 
               headers : {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                Authorization : `Bearer ${localStorage.getItem("token")}`
               },
 
               body: JSON.stringify({

@@ -10,8 +10,8 @@ const ProductSchema = new mongoose.Schema({
     image : {type: Array, required: true},
     size : {type : String, required: true},
     id : {type : String , required:true},
+    userid :{type : String , required:true}
     
-
 })
 
 /*Because in frameworks like Next.js / serverless / hot reload (nodemon):

@@ -5,14 +5,15 @@ import { button, div, p } from 'framer-motion/client';
 import './LatestCollections.css'
 import Bottompage from './Bottompage.jsx';
 import {assets} from "../assets/assets.js"
+import toast from "react-hot-toast";
 
 
 
 
-const Product = () => {
+const Product = ({cartload,setCartload}) => {
 
   // global things get using usecontext
-  const {products,objt,setObjt,setCart} = useContext(ShopContext)
+  const {products,objt,setObjt,cart,setCart} = useContext(ShopContext)
 
   console.log(products);
   
@@ -57,12 +58,13 @@ const Product = () => {
         const data = await res.json();
 
         if(data.success){
-          alert("Item Added To Cart")
+          setCartload(cartload+1)
+          toast.success("Item Added To Cart")
           
         }
         else{
           addcartvalidator = false
-          alert(data.message);
+          toast.error(data.message);
         }
 
       } catch (error) {
@@ -72,34 +74,21 @@ const Product = () => {
     }
 
   }
+
   // items append to cart list(push would not work as it returns size only)(synchronous)
   const handleChange4 = () => {
 
     //synchronous purpose
     if (sizedecide && addcartvalidator){
-      const nextsetObjt = {
-        name: product.name,
-        price : product.price,
-        description : product.description,
-        image : product.image[0],
-        category : product.category,
-        subCategory : product.subcategory,
-        _id : product._id,
-        size: bgdecider2
-      }
 
       setBgdecider(!bgdecider)
-      setObjt(nextsetObjt)
 
-      //append items in cart list but using spread operator not push of js 
-      setCart((a) => [...a , nextsetObjt])
     }
 
     else{
-      if(!sizedecide) {alert("Set a size first")}
+      if(!sizedecide) {toast.error("Set a size first")}
     }
   }
-
 
   const handleChange3 = (e) => {
     const {src} = e.target;
@@ -107,6 +96,10 @@ const Product = () => {
     setImageset(src)
   }
 
+  useEffect(() => {
+      setImageset(product.image[0])//remember why this useEffect is important because if you    place this imageset onclcik on image it ould not update because onClick runs first even before the product updates. That is totally a timming issue not logical issue.
+    },[product])
+    
   useEffect(() => {
     window.scrollTo(0,0)
   },[])

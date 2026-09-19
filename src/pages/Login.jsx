@@ -1,6 +1,7 @@
 import { correctBoxShadow } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = ({setGettoken}) => {
 
@@ -37,18 +38,18 @@ const Login = ({setGettoken}) => {
       if (data.success){
         localStorage.setItem("token",data.token);
 
-        isLogin ? alert("Login Successfull") : alert("SignUp Sucessfull")
+        isLogin ? toast.success("Login Successfull") : toast.success("SignUp Sucessfull")
 
         setGettoken(localStorage.getItem("token"))        
         navigate("/")
 
       }
       else{
-        alert( data.message )
+        toast.error( data.message )
       }
 
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       
     }
 

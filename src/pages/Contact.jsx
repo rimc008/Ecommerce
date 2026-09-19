@@ -9,8 +9,8 @@ const navLinkStyles5 = {
     fontSize:"25px",
     textDecoration:"None",
     borderRadius:"10px",
-    fontFamily:"Prata"
-    
+    fontFamily:"Prata",
+    width:"50%"   
 };
 
 const navLinkStyles6 ={
@@ -19,6 +19,8 @@ const navLinkStyles6 ={
 }
 
 const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pincode,setPincode,phone,setPhone}) => {
+
+  const [submit,setSubmit] = useState(false);
 
   const [fetching,setFetching] = useState(false);
 
@@ -49,9 +51,9 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           const data = await res.json();
 
-          setAddress(data.address);
-          setPincode(data.address.postcode);
-          setSpecificaddress(data.display_name)
+          setAddress(data.address || "");
+          setPincode(data.address.postcode || "");
+          setSpecificaddress(data.display_name || "");
 
         } catch (error) {
           console.log(error);
@@ -59,7 +61,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
           
         }
         finally{
-          setFetching(false)
+          setFetching(false);
         }
       }
       
@@ -67,6 +69,13 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
   }
 
   console.log(address);
+
+  const handleSubmit3 = (e) => {
+    
+    e.preventDefault();
+    setSubmit(true);
+
+  }
   
 
   return (
@@ -80,7 +89,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
         onAnimationComplete={() => window.scrollTo(0,0)}>
       <div style={{fontSize:"30px",display:"flex",justifyContent:"center"}}>
 
-        <div>
+        <div style={{width:"70%"}}>
 
         <div style={{textAlign:"center",borderBottom:"solid black 3px"}}>
           <h3>Shipping Address</h3>
@@ -97,13 +106,16 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
           {fetching && <h4>Fetching Location...</h4>}
         </div>
 
-        <form action="#" method="post" style={{display:"flex",flexDirection:"column",gap:"20px",marginTop:"40px"}}>
+        <form onSubmit={(e) => handleSubmit3(e)} action="" method="post" style={{display:"flex",flexDirection:"column",gap:"20px",marginTop:"40px"}}>
 
-          <div style={{display:"flex",gap:"100px",borderBottom:"solid black 2px",
+          <div style={{display:"flex",justifyContent:"space-between",borderBottom:"solid black 2px",
     paddingBottom:"25px"}}>
             <div>
               <label htmlFor="firstname"> First Name: </label>
-              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)}required/>
+
+            
+              <input type="text" id='firstname' name='firstname' style={navLinkStyles5} placeholder='First Name' value={firstname} onChange={(e) => setFirstname(e.target.value)} required/>
+              
             </div>
 
             <div>
@@ -139,7 +151,7 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           <div style={navLinkStyles6}>
             <label htmlFor="address">Address: </label>
-            <input value={specificaddress} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"800px",fontFamily:"Prata"}} placeholder='Your address' required/>
+            <input value={specificaddress}  onChange={(e) => setSpecificaddress(e.target.value)} type="text" name='address' id='address' style={{fontSize:"25px",textDecoration:"None",borderRadius:"10px",width:"80%",fontFamily:"Prata"}} placeholder='Your address' required/>
           </div>
 
           <div style={navLinkStyles6}>
@@ -154,11 +166,15 @@ const Contact = ({firstname,setFirstname,specificaddress,setSpecificaddress,pinc
 
           <div  style={{display:"flex",justifyContent:"center",gap:"30px",marginTop:"20px"}}>
 
-            <button className="imag3" type="submit" style={{width:"250px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",height:"50px",color:"white",fontFamily:"Prata"}}>Confirm Address</button>
 
-            <NavLink to="/placeorder">
-              <button className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Procced To Pay</button>
-            </NavLink>
+              { (!submit) && 
+              <button type="submit" className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Confirm address</button>}
+
+              { submit && 
+              <NavLink to="/placeorder">
+                <button className="imag3" style={{width:"250px",height:"50px",fontSize:"25px",borderRadius:"10px",backgroundColor:"Black",color:"white",fontFamily:"Prata"}}>Procced To Pay</button>
+              </NavLink>}
+
 
           </div>
 
