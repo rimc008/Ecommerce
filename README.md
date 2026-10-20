@@ -4,23 +4,24 @@ From browsing to checkout—an end-to-end e-commerce solution powered by React, 
 ## A little Preview
 https://github.com/user-attachments/assets/985da2e8-8990-464e-89a1-e9c119dc3110
 
-## Features✨
-* 🔐 Secure User Authentication using JWT-based login and registration.
-* 🛒 Shopping Cart Management with add, update, and remove item functionality.
-* 💳 Razorpay Payment Gateway Integration for secure online payments.
-* 📦 Order Placement & Tracking with dedicated order management.
-* 👤 User-Specific Orders ensuring customers can view only their own orders.
-* 🏪 Admin Dashboard for product and order management.
-* 🔍 Product Browsing & Search with category and collection views.
-* 📱 Responsive UI optimized for tablets and desktop devices.
-* ⚡ Modern React Frontend with smooth navigation and interactive user experience.
-* 🗄️ MongoDB Database Integration for persistent storage of users, products, carts, and orders.
-* 🌐 RESTful API Architecture built with Node.js and Express.
-* 🛡️ Protected Routes & Authorization to secure sensitive operations.
-* 🎨 Clean and Intuitive User Interface focused on usability and performance.
 
-## Folder structure📁
-## 📂 Project Structure
+## ✨ Features
+
+- 🔐 **Secure User Authentication** — JWT-based login, registration, and protected routes.
+- 🛒 **Shopping Cart Management** — Add, update, and remove items with dynamic cart functionality.
+- 💳 **Razorpay Payment Integration** — Online payment processing through the Razorpay payment gateway.
+- 📦 **Order Management** — Place orders and view order details and status.
+- 👤 **User-Specific Orders** — Ensure customers can access only their own orders.
+- 🏪 **Admin Dashboard** — Manage products, product listings, and customer orders.
+- 🔍 **Product Browsing & Search** — Explore products through collections and category-based navigation.
+- 🖼️ **Cloudinary Integration** — Store and manage product images.
+- 🛡️ **API Security** — Authentication middleware, protected operations, and rate limiting.
+- ⚡ **RESTful API Architecture** — Modular backend built with Node.js and Express.js.
+- 🗄️ **MongoDB Integration** — Persistent storage for users, products, and order data.
+- 🎨 **Modern User Interface** — Clean layouts, intuitive navigation, and smooth animations using Framer Motion.
+- 📱 **Responsive Design** — Optimized layouts for mobile devices, tablets, and desktops.
+
+## 📁 Project Structure
 
 ```text
 Ecommerce/
@@ -102,72 +103,122 @@ Ecommerce/
 │
 └── README.md
 ```
-## Tech Stack🧑🏻‍💻
 
-### Frontend🎨
+## 🧑🏻‍💻 Tech Stack
 
-* React.js
-* Vite
-* React Router DOM
-* CSS3
-* Framer Motion
+### 🎨 Frontend
 
-### Backend⚙️
+- **React.js** — Component-based user interface development.
+- **Vite** — Fast development server and build tooling.
+- **React Router DOM** — Client-side routing and navigation.
+- **CSS3** — Responsive styling and visual design.
+- **Framer Motion** — Smooth animations and interactive transitions.
 
-* Node.js
-* Express.js
+### ⚙️ Backend
 
-### Database🗄️
+- **Node.js** — JavaScript runtime for server-side development.
+- **Express.js** — RESTful API development and request handling.
+- **JWT (JSON Web Tokens)** — Token-based authentication.
+- **Multer** — File upload handling.
+- **Rate Limiting** — Helps protect API endpoints from excessive requests.
 
-* MongoDB
-* Mongoose
+### 🗄️ Database & External Services
 
-### Authentication & Security🔐
+- **MongoDB** — Database for storing user, product, and order information.
+- **Cloudinary** — Product image storage and management.
+- **Razorpay** — Online payment gateway integration.
 
-* JWT (JSON Web Tokens)
-* bcrypt
-* Express Rate Limiter
-* Custom Authentication Middleware
+## 🚀 Key Highlights
 
-### Payment Gateway💳
+- **Full-Stack Architecture:** Separate customer storefront, admin dashboard, and backend API.
+- **Authentication & Authorization:** Protected routes and middleware-based access control.
+- **Payment Integration:** Razorpay-based online payment workflow.
+- **Product Management:** Dedicated administrative interface for managing product listings.
+- **Order Management:** Organized order handling and user-specific order access.
+- **Modular Architecture:** Organized controllers, models, routes, and reusable React components.
+- **Enhanced User Experience:** Responsive layouts, intuitive navigation, and smooth animations.
 
-* Razorpay
+## 🔒 Environment Configuration
 
-### Media Storage☁️
+Create a `.env` file inside the `backend/` directory and configure the environment variables required by your application.
 
-* Cloudinary
-* Multer
-
-### Tools & Deployment🛠️
-
-* Git
-* GitHub
-* Postman
-* VS Code
-
-## Run Locally 🚀
-
-### Backend ⚙️
-
-```bash
-cd ..
-cd backend
-npm run local
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 ```
 
-### Frontend 🎨
+**Important:** Never commit your actual credentials or secret keys to GitHub.
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+
+- Node.js and npm installed.
+- MongoDB connection configured.
+- Cloudinary account for image management.
+- Razorpay account for payment integration.
+
+### 1. Clone the Repository
 
 ```bash
-cd ..
+git clone https://github.com/rimc008/Ecommerce.git
+cd Ecommerce
+```
+
+### 2. Set Up the Backend
+
+```bash
+cd backend
+npm install
 npm run dev
 ```
 
-### Admin Panel 🏪
+Configure the environment variables in the backend `.env` file before starting the server.
+
+**Note:** Use `npm run dev` only if the backend's `package.json` defines that script. Otherwise, use the appropriate script configured in your project.
+
+### 3. Set Up the Customer Frontend
+
+Open a new terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### 4. Set Up the Admin Dashboard
+
+Open another terminal:
 
 ```bash
 cd admin
+npm install
 npm run dev
 ```
 
-## That's it 
-Liked the hardwork ? Give this repo a ⭐
+## 📌 Future Improvements
+
+- Add automated testing for critical application workflows.
+- Improve product filtering and sorting.
+- Enhance order status updates and notifications.
+- Implement more comprehensive error handling and logging.
+- Optimize API performance and database queries.
+- Deploy the frontend, admin dashboard, and backend for public access.
+
+## 👨‍💻 Author
+
+**Roman Chakraborty**
+
+- GitHub: [@rimc008](https://github.com/rimc008)
+- Repository: [E-Commerce Website](https://github.com/rimc008/Ecommerce)
+
+---
+
+⭐ If you find this project interesting, consider giving the repository a star!
